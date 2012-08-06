@@ -1,0 +1,26 @@
+<!-- MAIN JAVASCRIPTS -->
+<script type="text/javascript" src="../../js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../../js/global.js"></script>
+<script type="text/javascript" src="../../js/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="../js/mdashboard_v1.js"></script>
+<!-- MAIN JAVASCRIPTS END -->
+
+<!-- LOADING SCRIPT --> 
+<script type="text/javascript">
+    ${JQ}(window).load(function(){
+        ${JQ}("#loading").fadeOut(function(){
+            ${JQ}(this).remove();
+            ${JQ}('body').removeAttr('style');
+        });
+    });
+	#if($!returnMsg)
+		jQuery('#msg_cont').jGrowl("$!returnMsg", { 
+			theme: 'smoke',
+			life: 5000,
+			closer: false
+		});
+	#end
+</script>
+<!-- LOADING SCRIPT -->

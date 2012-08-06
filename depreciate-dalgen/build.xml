@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="depreciate-dalgen" default="release" basedir=".">
+	<!-- define properties -->
+	<property name="project.name" value="depreciate" />
+	<property name="dal.name" value="depreciate" />
+	<property name="name" value="${project.name}-dalgen" />
+
+	<loadproperties srcFile="db.properties" />
+
+	<path id="classpath.condition">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+	<!-- 加载ant optional tasks -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="classpath.condition"/>
+
+	<!-- properties for directory -->
+	<property name="dir.conf" value="${user.home}/.middlegen/conf" />
+	<property name="dir.lib" value="${user.home}/.middlegen/lib" />
+	<property name="dir.target" value="${basedir}/target" />
+	<property name="dir.deploy" value="/tmp/dalgen/main" />
+
+	<!-- properties for middlegen plugin -->
+	<property name="middlegen.templates" value="templates" />
+	<property name="middlegen.destination" value="${dir.deploy}" />
+	
+	<!-- mbaobao -->
+	<!--
+	<property name="middlegen.config.file" value="${basedir}/dal-config-mbaobao.xml" />
+	-->
+	<!-- gen depreciate -->
+	<property name="middlegen.config.file" value="${basedir}/dal-config.xml" />
+	<property name="middlegen.package" value="com.peigen.web.depreciate.${dal.name}.dal" />
+	<property name="middlegen.package.dir" value="com/peigen/web/depreciate/${dal.name}/dal" />
+
+	<!-- insert database configuration here -->
+	<!-- mysql -->
+	<property name="database.driver.file" value="${dir.lib}/mysql-connector-java-5.1.14.jar" />
+	<property name="database.driver.classpath" value="${database.driver.file}" />
+	<property name="database.driver" value="com.mysql.jdbc.Driver" />
+
+	<!-- classpath -->
+	<path id="classpath.main">
+		<pathelement path="${dir.conf}" />
+		<fileset dir="${dir.lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="antx_home_setting" description="设定ANTX_HOME即antx文件夹所在目录">
+ 		<!-- 引入环境变量ANTX_HOME -->
+ 		<property environment="env"/>
+		<if><not><isset property="env.ANTX_HOME"/></not>
+			<else>
+				<property name="dir.antx" value="${user.home}/soft/antx"/>
+			</else>
+    	</if>
+    	<echo message="{env.ANTX_HOME}"/>
+	</target>
+
+	<!-- compile middlegen plugin -->
+	<target name="compile" depends="antx_home_setting" description="">
+		<mkdir dir="${dir.lib}" />
+		<mkdir dir="${dir.conf}" />
+		<copy todir="${dir.lib}">
+			<fileset dir="${dir.antx}/repository/alipay/thirdparty/dalgen_10">
+				<include name="**/*.jar" />
+				<exclude name="**/*src.jar" />
+				<exclude name="**/*doc.jar" />
+			</fileset>
+		</copy>
+		<unjar src="${dir.lib}/dalgen-peigen.jar" dest="${dir.conf}" />
+	</target>
+
+	<!-- sanity check (database driver must be available) -->
+	<target name="check-driver-present">
+		<available file="${database.driver.file}" type="file" property="driver.present" />
+	</target>
+	<target name="panic-if-driver-not-present" unless="driver.present">
+		<fail>
+        JDBC驱动程序"${database.driver.file}"不存在。
+        </fail>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Run Middlegen                                                       -->
+	<!-- =================================================================== -->
+	<target name="middlegen" depends="compile,check-driver-present,panic-if-driver-not-present,clean" description="">
+		<taskdef name="middlegen" classname="middlegen.MiddlegenTask" classpathref="classpath.main" />
+		<echo message="生成目录在${dir.deploy}" />
+		<input message="请输入目标表名,多表以逗号分隔,全表生成请输入'*': " addproperty="tabs" />
+
+		<echo message="DAL配置文件：${middlegen.config.file}." />
+		<echo message="开始自动生成DAL..." />
+
+		<mkdir dir="${middlegen.destination}" />
+		<echo message="${dir.target}" />
+		<middlegen configfile="${middlegen.config.file}" runModel="SOFA" tabs="${tabs}" appname="${name}" databaseurl="${database.url}" driver="${database.driver}" username="${database.userid}" password="${database.password}" schema="${database.schema}" prefsdir="${dir.target}">
+
+			<iwallet destination="" mergedir="${middlegen.templates}/mergedir" package="${middlegen.package}">
+
+				<!-- 为每一张表生成一个数据对象类 -->
+				<fileproducer destination="${middlegen.destination}/java/${middlegen.package.dir}" template="${middlegen.templates}/do.vm" filename="dataobject/{0}DO.java" />
+
+				<!-- 为每一张表生成一个DAO接口 -->
+				<fileproducer destination="${middlegen.destination}/java/${middlegen.package.dir}" template="${middlegen.templates}/dao.vm" filename="daointerface/{0}DAO.java" />
+
+				<!-- 为每一张表生成ibatis DAO实现 -->
+				<fileproducer destination="${middlegen.destination}/java/${middlegen.package.dir}" template="${middlegen.templates}/ibatis.vm" filename="ibatis/Ibatis{0}DAO.java" />
+
+				<!-- 为每一张表生成一个sqlmapping文件 -->
+				<fileproducer destination="${middlegen.destination}/resources" template="${middlegen.templates}/table-sqlmap-mapping.vm" filename="sqlmap/{0}-sqlmap-mapping.xml" />
+
+				<!-- 生成ibatis的配置文件 -->
+				<fileproducer destination="${middlegen.destination}/resources" template="${middlegen.templates}/sqlmap.vm" filename="sqlmap/sqlmap.xml" />
+
+				<!-- 生成DAO beans的Spring配置文件 -->
+				<fileproducer destination="${middlegen.destination}/resources/spring" template="${middlegen.templates}/beans-dal-dao.vm" filename="${dal.name}-common-dal-dao.xml" />
+			</iwallet>
+		</middlegen>
+		<echo message="DAL生成已成功!" />
+
+	</target>
+
+	<target name="copy" depends="middlegen">
+		<property name="copy.to" value="${basedir}/../${project.name}-dal/src/main" />
+		<echo message="开始复制" />
+		<echo message="生成目录在${copy.to}" />
+		<copy todir="${copy.to}" overwrite="true">
+			<fileset dir="${dir.deploy}">
+			</fileset>
+	   </copy>
+	</target>
+
+	<target name="clean-perf" depends="" description="">
+		<delete dir="${dir.target}/*.properties" />
+	</target>
+
+	<target name="clean-middlegen" depends="clean-perf" description="">
+		<echo message="开始清理" />
+
+		<delete dir="${user.home}/.middlegen/lib" />
+		<echo message="清理目录:[${user.home}/.middlegen/lib]" />
+
+		<delete dir="${user.home}/.middlegen/conf" />
+		<echo message="清理目录:[${user.home}/.middlegen/conf]" />
+
+		<delete dir="${dir.deploy}" />
+		<echo message="清理目录:[${dir.deploy}]" />
+	</target>
+
+	<target name="clean" depends="clean-perf,clean-middlegen" description="clean all generated stuff" />
+
+	<!-- The default target to use -->
+	<target name="release" depends="clean,middlegen,copy" description="" />
+
+</project>

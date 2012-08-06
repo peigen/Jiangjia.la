@@ -1,0 +1,63 @@
+<table sqlname="depreciate_product_change_log">
+
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+			INSERT INTO depreciate_product_change_log
+            (	
+				product_id,
+				product_current_price,
+				product_change_price
+			)
+			VALUES
+			(
+	             ?,
+	             ?,
+	             ?
+	        );
+        	]]>
+		</sql>
+	</operation>
+
+	<operation name="findById" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				product_id,
+				product_current_price,
+				product_change_price
+				raw_add_time
+			FROM
+			    depreciate_product_change_log
+			WHERE id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="findByProductId" paramtype="primitive" multiplicity="many">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				product_id,
+				product_current_price,
+				product_change_price
+				raw_add_time
+			FROM
+			    depreciate_product_change_log
+			WHERE product_id = ?;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteByProductIdForTest" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			delete from depreciate_product_change_log where product_id = ?;
+        	]]>
+		</sql>
+	</operation>
+	
+</table>

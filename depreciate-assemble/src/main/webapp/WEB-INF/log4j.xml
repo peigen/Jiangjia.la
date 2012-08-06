@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "D:\home\desktop\log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <!-- ===================================================================== -->
+    <!--  以下是appender的定义                                                   -->
+    <!-- ===================================================================== -->
+    <appender name="FILE" class="org.apache.log4j.FileAppender">
+    	<param name="file" value="/tmp/depreciate.log"/>
+    	<param name="append" value="false"/>
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\} - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\} - %m%n"/>
+        </layout>
+    </appender>
+    <!-- ===================================================================== -->
+    <!--  以下是logger的定义                                                     -->
+    <!-- ===================================================================== -->
+    
+	<logger name="org.springframework" additivity="true">
+		<level value="info"/>
+		<appender-ref ref="FILE"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="org.mortbay.log" additivity="true">
+		<level value="info"/>
+		<appender-ref ref="FILE"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+    
+    <!-- ===================================================================== -->
+    <!--  Root logger的定义                                                             -->
+    <!-- ===================================================================== -->
+    <root>
+        <level value="info"/>
+        <appender-ref ref="FILE"/>
+		<appender-ref ref="STDOUT"/>
+    </root>
+</log4j:configuration>

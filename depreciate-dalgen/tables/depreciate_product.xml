@@ -1,0 +1,161 @@
+
+<table sqlname="depreciate_product">
+
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+			INSERT INTO depreciate_product
+            (	
+            	id,
+            	track_category,
+				product_name,
+				product_serial_no,
+				status,
+				product_current_price,
+				product_url,
+				raw_add_time)
+			VALUES
+			(
+				 ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?
+	        );
+        	]]>
+		</sql>
+	</operation>
+
+	<operation name="findById" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+            	track_category,
+				product_name,
+				product_serial_no,
+				status,
+				product_current_price,
+				product_url,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_product
+			WHERE id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="findBySerialNoAndCategory" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+            	track_category,
+				product_name,
+				product_serial_no,
+				status,
+				product_current_price,
+				product_url,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_product
+			WHERE track_category = ? and product_serial_no = ?;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="loadAllPageList" multiplicity="many">
+		<extraparams>
+			<param name="limitStart" javatype="int" />
+			<param name="pageSize" javatype="int" />
+        </extraparams>
+        
+		<sql>
+			<![CDATA[
+				select  
+					id,
+            		track_category,
+					product_name,
+					product_serial_no,
+					status,
+					product_current_price,
+					product_url,
+					raw_add_time,
+					raw_update_time
+				from depreciate_product;
+    		]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+				select 
+					id,
+            		track_category,
+					product_name,
+					product_serial_no,
+					status,
+					product_current_price,
+					product_url,
+					raw_add_time,
+					raw_update_time
+				from depreciate_product 
+				order by id desc limit #limitStart#,#pageSize#;
+			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateForId" paramtype="object">
+		<sql>
+			<![CDATA[
+			UPDATE
+			    depreciate_product
+			SET
+			    track_category = ?,
+				product_name = ?,
+				product_serial_no = ?,
+				status = ?,
+				product_current_price = ?,
+				product_url = ?
+			where
+				id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectForUpdate" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			select 
+				id,
+           		track_category,
+				product_name,
+				product_serial_no,
+				status,
+				product_current_price,
+				product_url,
+				raw_add_time,
+				raw_update_time
+			from depreciate_product
+			where
+				id = ?
+			for update
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteBySerialNoForTest" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			delete from depreciate_product where product_serial_no = ? and track_category = ?;
+        	]]>
+		</sql>
+	</operation>
+	
+</table>

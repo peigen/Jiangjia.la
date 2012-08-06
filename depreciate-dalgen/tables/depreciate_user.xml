@@ -1,0 +1,170 @@
+<table sqlname="depreciate_user">
+
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+			INSERT INTO depreciate_user
+            (	
+            	id,
+				user_name,
+				user_passwd,
+				status,
+				user_email,
+				raw_add_time
+			)
+			VALUES
+			(
+				 ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?
+	        );
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="loadAll" multiplicity="many">
+		<sql>
+			<![CDATA[
+				select  
+					id,
+					user_name,
+					user_passwd,
+					status,
+					user_email,
+					raw_add_time,
+					raw_update_time
+				from depreciate_user;
+    		]]>
+		</sql>
+	</operation>
+
+	<operation name="findById" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				user_name,
+				user_passwd,
+				status,
+				user_email,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_user
+			WHERE id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="findByUserName" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				user_name,
+				user_passwd,
+				status,
+				user_email,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_user
+			WHERE user_name = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="findByUserEmail" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				user_name,
+				user_passwd,
+				status,
+				user_email,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_user
+			WHERE user_email = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	
+	<operation name="loadAllPageList" multiplicity="many">
+		<extraparams>
+			<param name="limitStart" javatype="int" />
+			<param name="pageSize" javatype="int" />
+        </extraparams>
+        
+		<sql>
+			<![CDATA[
+				select  
+					id,
+					user_name,
+					user_passwd,
+					status,
+					user_email,
+					raw_add_time,
+					raw_update_time
+				from depreciate_user;
+    		]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+				select 
+					id,
+					user_name,
+					user_passwd,
+					status,
+					user_email,
+					raw_add_time,
+					raw_update_time
+				from depreciate_user 
+				order by id desc limit #limitStart#,#pageSize#;
+			]]>
+		</sqlmap>
+	</operation>
+	
+	
+	<operation name="updateForId" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			UPDATE
+			    depreciate_user
+			SET
+			    user_passwd = ?,
+				status = ?,
+				user_email = ?
+			where
+				id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteByUserNameForTest" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			delete from depreciate_user where user_name = ?;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteByUserEmailForTest" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			delete from depreciate_user where user_email = ?;
+        	]]>
+		</sql>
+	</operation>
+	
+</table>

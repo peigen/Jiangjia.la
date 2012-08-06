@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "D:\home\desktop\log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <!-- ===================================================================== -->
+    <!--  以下是appender的定义                                                           -->
+    <!-- ===================================================================== -->
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\} - %m%n"/>
+        </layout>
+    </appender>
+    <!-- ===================================================================== -->
+    <!--  以下是logger的定义                                                             -->
+    <!-- ===================================================================== -->
+	<logger name="log4j.logger.com.ibatis" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.com.ibatis.common.jdbc.SimpleDataSource" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.com.ibatis.common.jdbc.ScriptRunner" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.Connection" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.Statement" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.PreparedStatement" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.ResultSet" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="org.apache.commons.beanutils" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="org.springframework" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="org.mortbay.log" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	
+	<logger name="log4j.category.org.springframework.data.document.mongodb" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+    
+    <!-- ===================================================================== -->
+    <!--  Root logger的定义                                                             -->
+    <!-- ===================================================================== -->
+    <root>
+        <level value="debug"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</log4j:configuration>

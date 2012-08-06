@@ -1,0 +1,77 @@
+
+<div class="content">
+	<div id="navButtons">
+		<ul>
+			<li><a href="#">user</a></li>
+			<li><a href="index.html">index</a></li>
+			<li><a href="#">contact</a></li>
+		</ul>
+	</div>
+
+	<p class="pageHead">查询追踪的商品</p>
+	<p>
+		<img src="../../images/WetTulips.jpg" class="imgLeft" width="100" height="125" alt="wet tulips" />
+		<form enctype="multipart/form-data" method="get" action="/showMyFollow.html">
+        	<input name="userName" value="peigen" />
+			<button name="submit" type="submit">查</button>
+		</form>
+	</p>
+	<p>
+		#if($!userInfo)
+			<ol>
+				<li>
+					userId=$!userInfo.id
+				</li>
+				<li>
+					userName=$!userInfo.userName
+				</li>
+				<li>
+					status=$!userInfo.status
+				</li>
+				<li>
+					rawAddTime=$!userInfo.rawAddTime
+				</li>
+			</ol>
+		#end
+	</p>
+	<p>
+		#if($!attentionProducts)
+			#foreach($product in $!attentionProducts)
+			<ol>
+				<li>
+					productName=$!product.productInfo.productName
+				</li><li>
+					category=$!product.productInfo.category
+				</li>
+				<li>
+					productSerialNo=$!product.productInfo.productSerialNo
+				</li>
+				<li>
+					productCurrentPrice=$!product.productInfo.productCurrentPrice
+				</li>
+				<li>
+					productUrl=$!product.productInfo.productUrl
+				</li>
+				<li>
+					
+					#foreach($productPicInfo in $!product.productInfo.productPicInfos)
+						<img src="$!productPicInfo.picUrl" width="100" height="125" alt="wet tulips" />
+					#end
+				</li>
+			</ol>
+			#end
+		#end
+	</p>
+	
+	<p class="pageHead">添加追踪商品</p>
+	<p>
+		<form method="post" action="/follow.html">
+        	<input name="attentionUrl" value="" placeholder="填入要加入的URL" size="80"/>
+        	<input type="hidden" name="userId" value="1983021800000001" />
+        	<input type="hidden" name="userName" value="peigen" />
+			<button name="submit" type="submit">跟踪</button>
+		</form>
+	</p>
+
+
+</div>

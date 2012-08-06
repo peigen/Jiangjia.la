@@ -1,0 +1,20 @@
+<!--  the title tag is extremely important in search engine optimization (SEO)  -->
+<title>商品追踪</title>
+<meta name="keywords" content="Fone HTML5 mobile template, QRdvark, Azalea Software" />
+<meta name="description" content="Fone is an HTML5 mobile web template, from Azalea Software. Download Fone, a free Creative Commons web page template, at www.QRdvark.com/templates/" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<link href="../../css/style_fone.css" rel="stylesheet" type="text/css"/>
+<!-- you can apply different style sheets for mobile vs. computer browsers -->
+<!--  <link href="style-mobile.css" rel="stylesheet" type="text/css" media="handheld" > -->
+<!--  <link href="style-computer.css" rel="stylesheet" type="text/css" media="screen" > -->
+<!--  the favicon & iOS home screen icon are both 57x57 PNG's. Use a full URL file path for Android devices.  -->
+<!--  <link rel="apple-touch-icon-precomposed" href="http://yoursite.com/apple-touch-icon.png"/>  -->
+<!--  <link rel="icon" type="image/vnd.microsoft.icon" href="http://yoursite.com/favicon.png" />  -->
+<!--  always make a site map for your mobile site  www.xml-sitemaps.com  -->
+<!--  <link rel="alternate" type="application/rss+xml" title="ROR" href="ror.xml" /> -->
+
+<!-- weibo auth -->
+<meta property="wb:webmaster" content="4f770c76cd0cffab" />

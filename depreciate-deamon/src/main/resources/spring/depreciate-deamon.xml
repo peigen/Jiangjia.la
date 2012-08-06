@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="byName">
+	<!-- Task -->
+	<bean id="inspectProductPriceTask"
+		class="com.peigen.web.depreciate.deamon.task.InspectProductPriceTaskImpl" />
+
+	<!-- Job -->
+	<bean id="inspectProductPriceJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="inspectProductPriceTask" />
+		</property>
+		<property name="targetMethod">
+			<value>inspect</value>
+		</property>
+	</bean>
+
+	<!-- Job Trigger -->
+	<bean id="inspectProductPriceCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="inspectProductPriceJob" />
+		<property name="cronExpression" value="* * 1 * * ?" />
+	</bean>
+
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="inspectProductPriceCronTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+</beans>

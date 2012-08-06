@@ -1,0 +1,17 @@
+<table sqlname="depreciate_seq">
+
+	<operation name="insertInit">
+		<sql>
+			<![CDATA[
+			INSERT INTO depreciate_seq
+			(
+	            name
+	        )
+	        VALUES(
+	            ?
+	        );
+        	]]>
+		</sql>
+	</operation>
+
+</table>

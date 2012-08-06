@@ -1,0 +1,15 @@
+<projectDescription>
+  <name>depreciate-dalgen</name>
+  <comment>Autogen ibatis sqlmap</comment>
+  <projects>
+    <project>depreciate-dalgen</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

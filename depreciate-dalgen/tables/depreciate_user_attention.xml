@@ -1,0 +1,111 @@
+<table sqlname="depreciate_user_attention">
+
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+			INSERT INTO depreciate_user_attention
+            (	
+            	id,
+				user_id,
+				user_attention_product_id,
+				product_alias_name,
+				status,
+				raw_add_time,
+				raw_update_time
+			)
+			VALUES
+			(
+				 ?,
+				 ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?,
+	             ?
+	        );
+        	]]>
+		</sql>
+	</operation>
+
+	<operation name="findById" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				user_id,
+				user_attention_product_id,
+				product_alias_name,
+				status,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_user_attention
+			WHERE id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="findByUserId" multiplicity="many" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				user_id,
+				user_attention_product_id,
+				product_alias_name,
+				status,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_user_attention
+			WHERE user_id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="findByUserIdAndProductId" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			SELECT
+			    id,
+				user_id,
+				user_attention_product_id,
+				product_alias_name,
+				status,
+				raw_add_time,
+				raw_update_time
+			FROM
+			    depreciate_user_attention
+			WHERE user_id = ? and user_attention_product_id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateForId" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			UPDATE
+			    depreciate_user_attention
+			SET
+			    user_attention_product_id = ?,
+				product_alias_name = ?,
+				status = ?
+			where
+				id = ?
+			;
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteByUserIdForTest" paramtype="primitive">
+		<sql>
+			<![CDATA[
+			delete from depreciate_user_attention where user_id = ?;
+        	]]>
+		</sql>
+	</operation>
+	
+</table>

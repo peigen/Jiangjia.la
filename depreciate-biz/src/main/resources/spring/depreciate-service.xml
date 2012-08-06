@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Service -->
+	<bean id="productService" class="com.peigen.web.depreciate.service.api.impl.ProductServiceImpl" />
+	<bean id="userService" class="com.peigen.web.depreciate.service.api.impl.UserServiceImpl" />
+	<bean id="parseService" class="com.peigen.web.depreciate.service.api.impl.ParseServiceImpl" />
+	<bean id="productQueryService" class="com.peigen.web.depreciate.service.query.impl.ProductQueryServiceImpl" />
+	<bean id="userQueryService" class="com.peigen.web.depreciate.service.query.impl.UserQueryServiceImpl" />
+	<bean id="userAttentionQueryService" class="com.peigen.web.depreciate.service.query.impl.UserAttentionQueryServiceImpl" />
+	<bean id="productPicQueryService" class="com.peigen.web.depreciate.service.query.impl.ProductPicQueryServiceImpl" />
+	
+	<!-- Repository -->
+	<bean id="productRepository" class="com.peigen.web.depreciate.service.repository.ProductRepositoryImpl" />
+	<bean id="userRepository" class="com.peigen.web.depreciate.service.repository.UserRepositoryImpl" />
+	<bean id="userAttentionRepository" class="com.peigen.web.depreciate.service.repository.UserAttentionRepositoryImpl" />
+	<bean id="productChangeLogRepository" class="com.peigen.web.depreciate.service.repository.ProductChangeLogRepositoryImpl" />
+	<bean id="productPicRepository" class="com.peigen.web.depreciate.service.repository.ProductPicRepositoryImpl" />
+	
+	<!-- cache -->
+	<bean id="userLocalCache" class="com.peigen.web.depreciate.service.cache.impl.UserLocalCacheImpl" />
+	
+	<!-- misc -->
+	<bean id="lowPicBucket" class="com.peigen.web.depreciate.service.misc.image.UpYun">
+		<constructor-arg name="bucketName" value="pic_low" />
+		<constructor-arg name="userName" value="jiangjiala_auto" />
+		<constructor-arg name="password" value="peigen*8" />
+	</bean>
+	
+	<bean id="midPicBucket" class="com.peigen.web.depreciate.service.misc.image.UpYun">
+		<constructor-arg name="bucketName" value="pic_mid" />
+		<constructor-arg name="userName" value="jiangjiala_auto" />
+		<constructor-arg name="password" value="peigen*8" />
+	</bean>
+	
+	<bean id="highPicBucket" class="com.peigen.web.depreciate.service.misc.image.UpYun">
+		<constructor-arg name="bucketName" value="pic_high" />
+		<constructor-arg name="userName" value="jiangjiala_auto" />
+		<constructor-arg name="password" value="peigen*8" />
+	</bean>
+	
+	
+	<bean id="picBucketService" class="com.peigen.web.depreciate.service.misc.image.PicBucketServiceImpl" />
+	
+</beans>

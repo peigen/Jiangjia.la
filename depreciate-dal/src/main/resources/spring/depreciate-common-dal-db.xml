@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="byName">
+	
+	<bean id="propertyConfigurerForJDBC"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+	
+	<!-- mysql -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+ 		<property name="driverClassName"><value>${ds.mysqlClassName}</value></property>
+    	<property name="url"><value>${ds.mysqlUrl}</value></property>
+    	<property name="username"><value>${ds.username}</value></property>
+    	<property name="password"><value>${ds.password}</value></property>
+    	<property name="maxActive"><value>80</value></property>
+    	<property name="maxIdle"><value>20</value></property>
+    	<property name="maxWait"><value>30</value></property>
+    </bean>
+    
+	<!-- TransactionManager  -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- transaction Template -->
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:sqlmap/sqlmap.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="baseSqlMapClientDAO" abstract="true">
+		<property name="dataSource" >
+			<ref bean="dataSource"/>
+		</property>
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+</beans>

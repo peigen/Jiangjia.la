@@ -1,0 +1,25 @@
+    <aside class="md_sidebar">
+      <div class="vwport">
+        <div class="md_logo"><a class="a_logo" href="/index.html"><img src="images/md_logo.png" width="206" height="43" alt="麦包包控制台" /></a></div>
+        <nav class="nav_side">
+          <ul class="ul_nav_side">
+            <li><a class="a_nav_side md_ico_1" href="/welcome.html">主控界面</a></li>
+          </ul>
+          <ul class="ul_nav_side">
+            <li><a class="a_nav_side md_ico_2" href="#">系统管理</a></li>
+          </ul>
+          <ul class="ul_nav_side">
+            <li #if($!navNow=='lotteryList.html')class="nav_now"#end><a class="a_nav_side md_ico_3" href="/lotteryList.html">代金券管理</a></li>
+            <li #if($!navNow=='lotteryDetail.html')class="nav_now"#end><a class="a_nav_side md_ico_4" href="/lotteryDetail.html">代金券明细</a></li>
+            <li><a class="a_nav_side md_ico_6" href="#">标签管理</a></li>
+          </ul>
+           <ul class="ul_nav_side">
+            <li #if($!navNow=='lotteryFinanceList.html')class="nav_now"#end><a class="a_nav_side md_ico_6" href="/lotteryFinanceList.html">财务审核</a></li>
+          </ul>         
+		  <ul class="ul_nav_side">
+            <li><a class="a_nav_side md_ico_3" href="">对账管理</a></li>
+            <li><a class="a_nav_side md_ico_6" href="#">帐目子菜单</a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+    <settings cacheModelsEnabled="true" enhancementEnabled="false" lazyLoadingEnabled="false" maxRequests="3000" maxSessions="3000" maxTransactions="3000" useStatementNamespaces="false"/>
+    
+    <sqlMap resource="sqlmap/DepreciateProduct-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DepreciateProductChangeLog-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DepreciateProductPic-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DepreciateSeq-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DepreciateUser-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DepreciateUserAttention-sqlmap-mapping.xml"/>
+
+    <!-- manual sqlmap -->
+    <sqlMap resource="sqlmap/Extra-sqlmap-mapping.xml"/>
+</sqlMapConfig>
