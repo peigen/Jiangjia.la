@@ -29,32 +29,34 @@ import com.peigen.web.depreciate.test.base.DepreciateServiceTestBase;
  *
  */
 public class ProductServiceTest extends DepreciateServiceTestBase {
-	
-	@DepreciateTestAnnotated(description = "添加商品测试用例---成功用例")
-	public void testAddProduct() {
-		
-		cleanProduct();
-		
-		// 麦包包
-		ProductOrder mbaobaoOrder = genProductOrder();
-		ProductResult result = productService.addProduct(mbaobaoOrder);
-		
-		assertResult(result);
-		
-		// 麦考林
-		ProductOrder m18Order = genProductOrder();
-		m18Order.setUrl("http://product.m18.com/p-7112705.htm");
-		result = productService.addProduct(m18Order);
-		
-		assertResult(result);
-		
-		// 当当
-		ProductOrder dangdangOrder = genProductOrder();
-		dangdangOrder
-			.setUrl("http://product.dangdang.com/Product.aspx?product_id=1260888102#ref=www-0-D");
-		result = productService.addProduct(dangdangOrder);
-		
-		assertResult(result);
-		
-	}
+
+    @DepreciateTestAnnotated(description = "添加商品测试用例---成功用例")
+    public void testAddProduct() {
+
+        cleanProduct();
+
+        ProductResult result = null;
+
+        // 麦包包
+        //        ProductOrder mbaobaoOrder = genProductOrder();
+        //        result = productService.addProduct(mbaobaoOrder);
+        //
+        //        assertResult(result);
+
+        // 麦考林
+        ProductOrder m18Order = genProductOrder();
+        m18Order.setUrl("http://product.m18.com/p-7112705.htm");
+        result = productService.addProduct(m18Order);
+
+        assertResult(result);
+
+        // 当当
+        ProductOrder dangdangOrder = genProductOrder();
+        dangdangOrder
+            .setUrl("http://product.dangdang.com/Product.aspx?product_id=1260888102#ref=www-0-D");
+        result = productService.addProduct(dangdangOrder);
+
+        assertResult(result);
+
+    }
 }

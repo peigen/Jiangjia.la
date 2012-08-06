@@ -5,6 +5,8 @@
 *.war
 *.ear
 target
+bin
 .settings
 .classpath
+.project
 .DS_Store
