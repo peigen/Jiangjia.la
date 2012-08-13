@@ -1,0 +1,130 @@
+// Variables.less
+// Variables to customize the look and feel of Jiangjia.la
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black:                 #000;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #adadad;
+@grayLighter:           #eee;
+@white:                 #fff;
+@whiteGray:             #f9f9f9;
+
+
+// Accent colors
+// -------------------------
+@blue:                  #049cdb;
+@blueDark:              #0064cd;
+@green:                 #46a546;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@orange:                #f89406;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
+
+
+// Jiangjia.la colors
+// -------------------------
+@maroon:                #a6655a;
+@maroonLight:           #ea8e7f;
+@maroonLighter:         #d7c9c9;
+@maroonFresh:           #e02e13;
+@blueGreen:             #5290b1;
+@blueGreenLight:        lighten(@blueGreen, 10%);
+@blueGreenDark:         darken(@blueGreen, 10%);
+@confirm:               #94ce6d;
+@cancel:                #ff0000;
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        #f8e8e8;
+@textColor:             @grayDark;
+
+
+// Links
+// -------------------------
+@linkColor:             #ca6559;
+@linkColorHover:        darken(@linkColor, 15%);
+
+
+// Typography
+// -------------------------
+@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@baseFontSize:          10px;
+@baseFontFamily:        @sansFontFamily;
+@baseLineHeight:        14px;
+@altFontFamily:         @serifFontFamily;
+
+@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
+
+
+// Buttons
+// -------------------------
+@btnBackground:                     @maroonLight;
+@btnBackgroundHighlight:            lighten(@maroonLight, 2%);
+@btnBorder:                         @maroon;
+@btnShadow:                         @maroonLighter;
+@btnTextColor:                      #f7f7f7;
+
+
+// Forms
+// -------------------------
+@inputBackground:               @whiteGray;
+@inputBorder:                   #ccc;
+@inputBorderRadius:             3px;
+@inputDisabledBackground:       @grayLighter;
+@inputTextColor:                darken(@grayLight, 10%);
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath:          "../img/j_icon_sprite.png";
+
+
+// Input placeholder text color
+// -------------------------
+@placeholderText:         @grayLight;
+
+
+// Form states and alerts
+// -------------------------
+@warningText:             #c09853;
+@warningBackground:       #fcf8e3;
+@warningBorder:           darken(spin(@warningBackground, -10), 3%);
+
+@errorText:               #b94a48;
+@errorBackground:         #f2dede;
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+@successText:             #468847;
+@successBackground:       #dff0d8;
+@successBorder:           darken(spin(@successBackground, -10), 5%);
+
+@infoText:                #3a87ad;
+@infoBackground:          #d9edf7;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+

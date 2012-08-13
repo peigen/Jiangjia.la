@@ -1,0 +1,422 @@
+/* ==|== normalize ==========================================================
+   Normalize.css
+   ========================================================================== */
+// CSS Reset
+@import "reset.less";
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+
+/* ==|== primary styles =====================================================
+   Author: Dr_rOot
+   ========================================================================== */
+html {
+    height: 100%;
+}
+body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    font-family: @baseFontFamily;
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+    color: @textColor;
+    background-color: @bodyBackground;
+    overflow: hidden;
+}
+a {
+    color: @linkColor;
+    text-decoration: none;
+}
+a:hover {
+    color: @linkColorHover;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+input:focus {
+    outline: none !important;
+    border-color: @maroonFresh !important;
+}
+
+figure {
+    margin: 0;
+}
+
+
+
+#container {
+    .center-block();
+    width: 1100px;
+}
+
+#hd {
+    position: relative;
+    height: 92px;
+    .logo {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        margin: 0;
+        a {
+            display: block;
+            .size(242px, 77px);
+            overflow: hidden;
+            background: url(../img/logo.png) no-repeat;
+            /*-webkit-backface-visibility: hidden;
+            -webkit-transform-style: preserve-3d;
+            .transition(all .3s ease-in-out);
+            &:hover {
+                .rotate(-2deg);
+            }*/
+        }
+    }
+    .top_nav {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        font-size: 16px;
+        line-height: 16px;
+        color: @grayLight;
+        a {
+            margin: 0 8px;
+        }
+    }
+}
+
+
+#bd {
+    margin-top: 50px;
+    .transition(all .2s linear);
+    #squid {
+        width: 380px;
+        margin: 0 auto;
+        color: @blueGreenDark;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
+        .squid_message {
+            display: none;
+        }
+        .j_squid {
+            float: right;
+            width: 380px;
+        }
+    }
+    #enter_url {
+        padding-top: 20px; 
+    }
+    .fm_j {
+        font-size: 14px;
+        text-align: center;
+        color: @blueGreen;
+        text-shadow: 0px 1px 1px @white;
+        .ipt_wrapper {
+            position: relative;
+            margin: 12px auto;
+            display: inline-block;
+            .ie7-inline-block();
+            .lb_placeholder {
+                position: absolute;
+                top: 9px;
+                left: 10px;
+                display: block;
+                height: 18px;
+                font-size: 16px;
+                line-height: 25px;
+                color: @grayLight;
+                text-shadow: 0px 1px 1px @white;
+            }    
+        }
+        .txt_j {
+            padding: 10px 9px 8px;
+            .size(240px, 20px);
+            font-size: 16px;
+            line-height: 25px;
+            background-color: @inputBackground;
+            color: @inputTextColor;
+            text-shadow: 0px 1px 1px @white;
+            border: 1px solid @maroon;
+            .border-radius(3px);
+            .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.38)");
+        }
+        #j_url {
+            width: 400px;
+        }
+        .btn_j {
+            .size(100px, 40px);
+            margin: 0;
+            padding:0px 10px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 40px;
+            color: @btnTextColor;
+            text-shadow: 0px 1px 0px @maroon;
+            background-color: @maroonLight;
+            cursor: pointer;
+            border: 1px solid @maroon;
+            .border-radius(3px);
+            .box-shadow(0px 2px 0px rgba(153, 153, 153, 0.33));
+            .transition(all .1s linear);
+            &:hover {
+                background-color: @btnBackgroundHighlight;
+            }
+            &:active {
+                background-color: #maroon;
+                .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
+            }
+        }
+        .terms {
+            font-size: 15px;
+        }
+    }
+}
+
+
+#ft {
+    position: absolute;
+    left: 0px;
+    bottom: -90%;
+    width: 100%;
+    min-width: 1100px;
+    padding-top: 20px;
+    background: url(../img/wave.png) repeat-x;
+    height: 100%;
+    /*padding-bottom: 100%;*/
+    /*margin-bottom: 100%;*/
+    color: @blueGreen;
+    .transition(bottom .4s ease-out);
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+    .siteinfo {
+        height: 100%;
+        font-size: 14px;
+        font-family: @sansFontFamily;
+        text-align: center;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7);
+        background: #aadde4 url(../img/ft_bg.png) repeat;
+        a {
+            color: @blueGreenLight;
+            .transition(color .2s linear);
+            &:hover {
+                color: @blueGreen;
+            }
+        }
+        p {
+            margin: 0;
+            &.copyright {
+                padding: 10px 0;
+            }
+            &.links {
+                font-size: 12px;
+                span {
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+    &:hover {
+        bottom: -89%;
+    }
+}
+
+
+body.enter_url {
+    #bd {
+        #fm_enter_url {
+            display: block;
+        }
+        #product_info, #confirm, #sign_up, #sign_in {
+            display: none;
+        }
+    }
+}
+
+body.confirm_submit {
+    #bd {
+        #squid {
+            width: 550px;
+            margin: 0 auto;
+            .squid_message {
+                display: block;
+                position: relative;
+                float: left;
+                width: 330px;
+                background-color: #aadde4;
+                /*background-color: rgba(170, 221, 228, 0.8);*/
+                .box-shadow(~"6px 6px 0px #dfdfdf");
+                .message_body {
+                    position: relative;
+                    min-height: 100px;
+                    max-height: 120px;
+                    overflow: hidden;
+                    overflow-y: auto;
+                    padding: 10px 10px 24px 10px;
+                    font-size: 16px;
+                    line-height: 22px;
+                    p {
+                        text-indent: 2em;
+                        margin: 0;
+                    }
+                    span.confirm, span.cancel {
+                        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+                        color: @confirm;
+                    }
+                    span.cancel {
+                        color: @cancel;
+                    }
+                    .tip {
+                        position: absolute;
+                        left: 10px;
+                        bottom: 10px;
+                        font-size: 12px;
+                        line-height: 14px;
+                        color: #999;
+                    }
+                }
+                &::before, &::after {
+                    content: "";
+                    position: absolute;
+                    top: 52px;
+                    right: -20px;
+                    .size(0, 0);
+                    border: 10px solid transparent;
+                    border-left-color: #aadde4;
+                }
+                &::before {
+                    top: 58px;
+                    right: -26px;
+                    border-left-color: #dfdfdf;
+
+                }
+            }
+            .j_squid {
+                float: right;
+                width: 190px;
+            }
+        }
+        #enter_url, #product_info, #confirm {
+            display: block;
+        }
+        #fm_enter_url, #sign_up, #sign_in {
+            display: none;
+        }
+        #product_info {
+            position: relative;
+            width: 450px;
+            min-height: 70px;
+            font-size: 14px;
+            padding: 9px 9px 9px 89px;
+            border: 1px solid @whiteGray;
+            overflow: hidden;
+            overflow-y: auto;
+            margin: 0 auto;
+            background-color: #eee;
+            color: @blueGreenLight;
+            .border-radius(5px);
+            .box-shadow(~"inset 0px 0px 5px #666");
+            text-shadow: 1px 1px 1px @grayLight;
+            figure {
+                position: absolute;
+                top: 9px;
+                left: 9px;
+                .size(60px, 60px);
+                font-size: 0;
+                line-height: 0;
+                border: 5px solid @white;
+                background: url(../img/loading.gif) center center no-repeat, url(../img/pic_bg.png) repeat;
+                .border-radius(3px);
+                .box-shadow(~"1px 1px 5px rgba(0, 0, 0, 0.5)");
+                img {
+                    .border-radius(px);
+                }
+            }
+            h3 {
+                margin: 0 0 15px;
+                font-size: 16px;
+                line-height: 20px;
+                a {
+                    color: @blueGreenDark;
+                }
+            }
+            .price {
+                font-size: 32px;
+                color: @red;
+            }
+        }
+        #confirm {
+            text-align: center;
+            padding-top: 10px;
+            .btn_confirm, .btn_cancel {
+                .size(48px, 48px);
+                border: 0 none;
+                margin: 0 10px;
+                &:active {
+                    background-position: 0px 2px;
+                }
+            }
+            .btn_confirm {
+                background: url(../img/btn_confirm.png) 0px 0px no-repeat;
+
+            }
+            .btn_cancel {
+                background: url(../img/btn_cancel.png) no-repeat;
+            }
+        }
+    }
+}
+
+body.sign_up {
+    #bd {
+        margin-top: 20px;
+        #sign_up {
+            display: block;
+        }
+        #fm_enter_url, #product_info, #sign_in {
+            display: none;
+        }
+    }
+}
+
+body.sign_in {
+    #bd {
+        margin-top: 20px;
+        #sign_in {
+            display: block;
+        }
+        #fm_enter_url, #product_info, #sign_up {
+            display: none;
+        }
+    }
+}
+
+/*@media (min-width: 1600px) {
+    #container {
+        width: 1400px;
+    }
+}*/
+@media (min-height: 800px) {
+    body.sign_up, body.sign_in, body.enter_url, body.confirm_submit {
+        #bd {
+            margin-top: 100px;
+        }
+    }
+}
+
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+// Animate classes
+@import "animate.less";
+
+// Utility classes
+@import "utilities.less"; // Has to be last to override when necessary

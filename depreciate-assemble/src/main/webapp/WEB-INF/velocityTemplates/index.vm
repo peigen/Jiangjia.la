@@ -1,77 +1,157 @@
+<!DOCTYPE HTML>
+<!-- 
+         :;'                                                                    
+        '1;1;;;;::'                  :;|:               ''                      
+        ;||1|;11;1|                '||1|'              ;11:   1|;:'         :|1'
+'|;;;;:'1||||;|||;           ':' ';|1|1|:              ;|1:    ;|||         1;1'
+ ;|;|1;1;:;1|||1|:         '||11|1||::;|1|;:         '';|||'';;;;||;;      :1|| 
+:||;||1|;;||1111|1||:    :||;1:;|||:   ';||1;       :1|1||1;:;;;;;;;;      1;1' 
+|111||||1|111|;||11;;   ;1|1;1   ;11:  ||1    '|||||||:;1|1;  ;;  ;;:      '::  
+|||||1|||;11;1;1;;:        ||1:  ;11;  |;1'   '1;1:||11|||1|  1;|;1|;      :'   
+||||;;:' 1;1|||1|||;       :1|;  :1|;  1;1     1;1:|;1|1|1; ::1|1111|:    ;11;  
+;11;     :;;|1|1;;;:        1|1  '11| :1||     :|||||||||;  ;||||||||;      '   
+ ;|:        '11;             ::    :   ::'                                      
+-->
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="zh-CN">
+<![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="zh-CN">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
 
-<div class="content">
-	<div id="navButtons">
-		<ul>
-			<li><a href="#">user</a></li>
-			<li><a href="index.html">index</a></li>
-			<li><a href="#">contact</a></li>
-		</ul>
-	</div>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Dr_rOot &amp; Peigen" />
 
-	<p class="pageHead">查询追踪的商品</p>
-	<p>
-		<img src="../../images/WetTulips.jpg" class="imgLeft" width="100" height="125" alt="wet tulips" />
-		<form enctype="multipart/form-data" method="get" action="/showMyFollow.html">
-        	<input name="userName" value="peigen" />
-			<button name="submit" type="submit">查</button>
-		</form>
-	</p>
-	<p>
-		#if($!userInfo)
-			<ol>
-				<li>
-					userId=$!userInfo.id
-				</li>
-				<li>
-					userName=$!userInfo.userName
-				</li>
-				<li>
-					status=$!userInfo.status
-				</li>
-				<li>
-					rawAddTime=$!userInfo.rawAddTime
-				</li>
-			</ol>
-		#end
-	</p>
-	<p>
-		#if($!attentionProducts)
-			#foreach($product in $!attentionProducts)
-			<ol>
-				<li>
-					productName=$!product.productInfo.productName
-				</li><li>
-					category=$!product.productInfo.category
-				</li>
-				<li>
-					productSerialNo=$!product.productInfo.productSerialNo
-				</li>
-				<li>
-					productCurrentPrice=$!product.productInfo.productCurrentPrice
-				</li>
-				<li>
-					productUrl=$!product.productInfo.productUrl
-				</li>
-				<li>
-					
-					#foreach($productPicInfo in $!product.productInfo.productPicInfos)
-						<img src="$!productPicInfo.picUrl" width="100" height="125" alt="wet tulips" />
-					#end
-				</li>
-			</ol>
-			#end
-		#end
-	</p>
-	
-	<p class="pageHead">添加追踪商品</p>
-	<p>
-		<form method="post" action="/follow.html">
-        	<input name="attentionUrl" value="" placeholder="填入要加入的URL" size="80"/>
-        	<input type="hidden" name="userId" value="1983021800000001" />
-        	<input type="hidden" name="userName" value="peigen" />
-			<button name="submit" type="submit">跟踪</button>
-		</form>
-	</p>
+    <title>降价啦 &#991; Jiangjia.la</title>
 
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues. More info: h5bp.com/i/378 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-</div>
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!-- Standard iPhone --> 
+    <link rel="apple-touch-icon" sizes="57x57" href="touch-icon-iphone-57.png" />
+    <!-- Retina iPhone --> 
+    <link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone-114.png" />
+    <!-- Standard iPad --> 
+    <link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad-72.png" />
+    <!-- Retina iPad --> 
+    <link rel="apple-touch-icon" sizes="144x144" href="touch-icon-ipad-144.png" />
+
+    <link rel="stylesheet" type="text/css" href="css/j.css" />
+
+    <!-- All JavaScript at the bottom, except this Modernizr build.
+         Modernizr enables HTML5 elements & feature detects for optimal performance.
+         Create your own custom Modernizr build: www.modernizr.com/download/
+    <script src="js/vendor/modernizr-2.5.3.min.js"></script> -->
+</head>
+<body class="enter_url">
+    <div id="container" class="cf">
+        <header id="hd">
+            <h1 class="logo"><a class="ir switch" data-panel-name="enter_url" href="" title="降价啦 &#991; Jiangjia.la">降价啦！</a></h1>
+            <nav class="top_nav">
+                <a class="switch" data-panel-name="sign_up" href="#sign_up">注册</a>&#9752;<a class="switch" data-panel-name="sign_in" href="#sign_in">登录</a>
+            </nav>
+        </header>
+        <div id="bd" role="main">
+            <div id="squid" class="cf">
+                <article class="squid_message">
+                    <section class="message_body">
+                        <p>请检查降小鱿为您抓回来的商品信息是否正确。如正确，请点击框框下方的“<span class="confirm">&#10003;</span>”确认提交；错误则请点框框下方的“<span class="cancel">&times;</span>”取消提交。</p>
+                        <span class="tip">{ Ps. 降小鱿我会带您回到上一个页面 }</span>
+                    </section>
+                    <div class="message_arrow"></div>
+                </article>
+                <figure class="j_squid">
+                    <img src="img/j_squid.png" alt="降小鱿" />
+                </figure>
+            </div>
+            <div id="enter_url">
+                <form id="fm_enter_url" action="/add.html" method="post" class="fm_j cf">
+                    <div class="ipt_wrapper">
+                        <label class="lb_placeholder" for="j_url">请贴入商品的URL地址</label>
+                        <input type="text" class="txt_j" id="j_url" autofocus="autofocus" tabindex="1" name="" />
+                        <button type="submit" class="btn_j btn_j_url switch" data-panel-name="confirm_submit" tabindex="2">坐等降价</button>
+                    </div>
+                </form>
+                <div id="product_info" class="loading">
+                    <figure>
+                        <img src="http://cdn06.mbbimg.cn/1211/12110116/02/60/01.jpg" alt="" />
+                    </figure>
+                    <section>
+                        <h3><a target="_blank" href="http://item.mbaobao.com/pshow-1211011602.html?s_l=1_13" title="新窗口打开[http://item.mbaobao.com/pshow-1211011602.html?s_l=1_13]">[戈尔本]英伦再现系列牛皮手提单肩斜挎包 黄棕色（马鞍棕）</a></h3>
+                        <div class="product_details">
+                            <span>当前价格：</span><span class="price">599.00</span>
+                        </div>
+                    </section>
+                </div>
+                <div id="confirm">
+                    <button class="btn_cancel ir switch" data-panel-name="enter_url" type="buuton">取消</button>
+                    <button class="btn_confirm ir" type="buuton">确认</button>
+                </div>
+            </div>
+            <div id="sign_up">
+                <form id="fm_sign_up" action="" method="POST" class="fm_j cf">
+                    <div class="ipt_wrapper">
+                        <label class="lb_placeholder" for="j_u_email">您常用的电子邮箱</label>
+                        <input type="text" class="txt_j" id="j_u_email" autofocus="autofocus" tabindex="1" name="email" />
+                    </div>
+                    <div class="ipt_wrapper">
+                        <label class="lb_placeholder" for="j_u_pwd">密码</label>
+                        <input type="password" class="txt_j" id="j_u_pwd" tabindex="2" name="" />
+                    </div>
+                    <div class="ipt_wrapper">
+                        <button type="submit" class="btn_j" tabindex="3">我要注册</button>
+                    </div>
+                    <div class="terms">
+                        <label for="j_u_terms"><input type="checkbox" id="j_u_terms" class="chk_j" name="" /> 我已阅读并同意</label><a href="terms">《降价啦服务条款》</a>
+                    </div>
+                </form>
+            </div>
+            <div id="sign_in">
+                <form id="fm_sign_in" action="" method="POST" class="fm_j cf">
+                    <div class="ipt_wrapper">
+                        <label class="lb_placeholder" for="j_i_email">电子邮箱地址</label>
+                        <input type="text" class="txt_j" id="j_i_email" autofocus="autofocus" tabindex="1" name="email" />
+                    </div>
+                    <div class="ipt_wrapper">
+                        <label class="lb_placeholder" for="j_i_pwd">密码</label>
+                        <input type="password" class="txt_j" id="j_i_pwd" tabindex="2" name="" />
+                    </div>
+                    <div class="ipt_wrapper">
+                        <button type="submit" class="btn_j" tabindex="3">立即登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer id="ft" class="animated">
+        <div class="siteinfo">
+            <p class="copyright">Copyright &copy;2011 - 2012 <a href="http://jiangjia.la/">降价啦</a> { <a href="http://jiangjia.la/">jiangjia.la</a> }</p>
+            <p class="links">
+                <a rel="nofollow" href="http://jiangjia.la/about">关于我们</a><span>&#991;</span><a rel="nofollow" href="http://jiangjia.la/contact">联系我们</a><span>&#991;</span><a rel="nofollow" href="http://blog.jiangjia.la">官方博客</a>
+            </p>
+        </div>
+    </footer>
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script> 
+    <script src="js/j.js"></script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
