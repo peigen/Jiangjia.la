@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSONObject;
 import com.peigen.common.lang.util.ListUtil;
 import com.peigen.common.lang.util.StringUtil;
 import com.peigen.common.lang.util.money.Money;
@@ -51,7 +51,7 @@ public class AddProductController extends ControllerBase {
 		String url = getParameterTrim(request, "url");
 		
 		if (StringUtil.isBlank(email) || StringUtil.isBlank(url)) {
-			return (new Gson()).toJson("狗日，你丫是二啊!");
+			JSONObject.toJSONString("狗日，你丫是二啊!");
 		}
 		
 		ProductResult result = new ProductResult();
@@ -62,7 +62,7 @@ public class AddProductController extends ControllerBase {
 		
 		result = productService.addProduct(productOrder);
 		
-		return (new Gson()).toJson(result);
+		return JSONObject.toJSONString(result);
 	}
 	
 	@RequestMapping(value = "/addByPara.ws", method = { RequestMethod.GET })
@@ -77,7 +77,7 @@ public class AddProductController extends ControllerBase {
 		
 		if (StringUtil.isBlank(email) || StringUtil.isBlank(url) || StringUtil.isBlank(price)
 			|| StringUtil.isBlank(serialNo)) {
-			return (new Gson()).toJson("狗日，你丫是二啊!");
+			return JSONObject.toJSONString("狗日，你丫是二啊!");
 		}
 		
 		ProductResult result = new ProductResult();
@@ -93,6 +93,6 @@ public class AddProductController extends ControllerBase {
 		
 		result = productService.addProduct(productOrder);
 		
-		return (new Gson()).toJson(result);
+		return JSONObject.toJSONString(result);
 	}
 }

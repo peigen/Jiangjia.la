@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSONObject;
 import com.peigen.common.lang.util.PrintLogTool;
 import com.peigen.web.depreciate.service.result.BatchUserAttentionResult;
 
@@ -50,7 +50,7 @@ public class UserAttentionQueryController extends ControllerBase {
 		
 		if (result.isSuccess() && result.isExecuted()) {
 			
-			return (new Gson()).toJson(result);
+			return JSONObject.toJSONString(result);
 		}
 		
 		return "日~~~出错了";
