@@ -31,108 +31,84 @@ import org.springframework.util.Assert;
  *
  */
 public class UserSignUpOrder implements Order {
-
-    /** Comment for <code>serialVersionUID</code> */
-    private static final long serialVersionUID = 7741995543795482671L;
-
-    private String            userName;
-
-    private String            userPasswd;
-
-    private String            userEmail;
-
-    /**
-     * 
-     * @see com.peigen.web.depreciate.service.order.Order#check()
-     */
-    public void check() {
-
-        Assert.hasText(userName);
-        Assert.hasText(userPasswd);
-
-        String regex = "(^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$)|(^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$)";
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(userName);
-        if (!m.matches()) {
-            Assert.notNull(userEmail, "邮箱不能为空！");
-            regex = "(^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$)";
-            p = Pattern.compile(regex);
-            m = p.matcher(userEmail);
-            Assert.isTrue(m.matches(), "邮箱格式不正确！");
-        }
-    }
-
-    /**
-     * 构建一个<code>UserSignUpOrder.java</code>
-     */
-    public UserSignUpOrder() {
-        super();
-    }
-
-    /**
-     * 构建一个<code>UserSignUpOrder.java</code>
-     * @param userName
-     * @param userPasswd
-     * @param userEmail
-     */
-    public UserSignUpOrder(String userName, String userPasswd, String userEmail) {
-        super();
-        this.userName = userName;
-        this.userPasswd = userPasswd;
-        this.userEmail = userEmail;
-    }
-
-    /**
-     * @return Returns the userName
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * @param userName
-     * The userName to set.
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    /**
-     * @return Returns the userPasswd
-     */
-    public String getUserPasswd() {
-        return userPasswd;
-    }
-
-    /**
-     * @param userPasswd
-     * The userPasswd to set.
-     */
-    public void setUserPasswd(String userPasswd) {
-        this.userPasswd = userPasswd;
-    }
-
-    /**
-     * @return Returns the userEmail
-     */
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    /**
-     * @param userEmail
-     * The userEmail to set.
-     */
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    /**
-     * @return
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }
+	
+	/** Comment for <code>serialVersionUID</code> */
+	private static final long	serialVersionUID	= 7741995543795482671L;
+	
+	private String				userPasswd;
+	
+	private String				userEmail;
+	
+	/**
+	 * 
+	 * @see com.peigen.web.depreciate.service.order.Order#check()
+	 */
+	public void check() {
+		
+		Assert.hasText(userPasswd);
+		Assert.hasText(userEmail);
+		
+		String regex = "(^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$)";
+		Pattern p = Pattern.compile(regex);
+		p = Pattern.compile(regex);
+		Matcher m = p.matcher(userEmail);
+		Assert.isTrue(m.matches(), "邮箱格式不正确！");
+	}
+	
+	/**
+	 * 构建一个<code>UserSignUpOrder.java</code>
+	 */
+	public UserSignUpOrder() {
+		super();
+	}
+	
+	/**
+	 * 构建一个<code>UserSignUpOrder.java</code>
+	 * @param userPasswd
+	 * @param userEmail
+	 */
+	public UserSignUpOrder(String userPasswd, String userEmail) {
+		super();
+		this.userPasswd = userPasswd;
+		this.userEmail = userEmail;
+	}
+	
+	/**
+	 * @return Returns the userPasswd
+	 */
+	public String getUserPasswd() {
+		return userPasswd;
+	}
+	
+	/**
+	 * @param userPasswd
+	 * The userPasswd to set.
+	 */
+	public void setUserPasswd(String userPasswd) {
+		this.userPasswd = userPasswd;
+	}
+	
+	/**
+	 * @return Returns the userEmail
+	 */
+	public String getUserEmail() {
+		return userEmail;
+	}
+	
+	/**
+	 * @param userEmail
+	 * The userEmail to set.
+	 */
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	
+	/**
+	 * @return
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+	}
 }

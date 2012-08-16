@@ -57,6 +57,7 @@ public abstract class DepreciateTestBase extends AbstractJUnit38SpringContextTes
 	
 	protected final String	TEST_USER_NAME			= "peigen";
 	protected final String	TEST_USER_PASSWD		= "peigen";
+	protected final String	TEST_USER_EMAIL			= "peigen_peigen@163.com";
 	
 	protected final String	TEST_URL_MBAOBAO		= "http://item.mbaobao.com/pshow-1011600203.html?l=hc-r";
 	protected final String	TEST_URL_M18			= "http://product.m18.com/p-SU113967.htm";

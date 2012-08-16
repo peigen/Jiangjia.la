@@ -86,7 +86,7 @@ public class DepreciateServiceTestBase extends DepreciateDalTestBase {
 		cleanUser(TEST_USER_NAME);
 		
 		UserSignUpOrder signUpOrder = new UserSignUpOrder();
-		signUpOrder.setUserName(TEST_USER_NAME);
+		signUpOrder.setUserEmail(TEST_USER_EMAIL);
 		signUpOrder.setUserPasswd(TEST_USER_PASSWD);
 		
 		UserResult result = userService.signUp(signUpOrder);

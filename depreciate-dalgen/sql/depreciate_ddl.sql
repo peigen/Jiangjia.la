@@ -20,13 +20,13 @@ CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_user` (
   `id` VARCHAR(16) NOT NULL COMMENT 'ID格式：日期+自增(8位)' ,
   `user_name` VARCHAR(32) NULL COMMENT '用户名' ,
   `user_passwd` VARCHAR(32) NULL COMMENT '用户密码名称' ,
-  `status` VARCHAR(16) NOT NULL COMMENT '状态 (INIT:初始化)' ,
   `user_email` VARCHAR(128) NULL COMMENT '用户Email' ,
+  `status` VARCHAR(16) NOT NULL COMMENT '状态 (INIT:初始化)' ,
   `raw_add_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间' ,
   `raw_update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间' ,
   PRIMARY KEY (`ID`) ,
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) ,
-  INDEX `USER_NAME_INDEX` (`USER_NAME` ASC))
+  INDEX `EMAIL_INDEX` (`user_email` ASC))
 ENGINE = InnoDB
 CHARACTER SET utf8
 COLLATE utf8_general_ci
