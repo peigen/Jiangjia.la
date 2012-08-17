@@ -1,12 +1,2 @@
 #set ($JQ="$")
-<!DOCTYPE HTML>
-<html>
-<head>
-#parse("layout/header.vm")
-</head>
-<body
 ${screen_content}
-<div id="msg_cont" class="bottom-left"></div>
-#parse("layout/footer.vm")
-</body>
-</html>

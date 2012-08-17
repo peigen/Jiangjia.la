@@ -1,9 +1,0 @@
-<div class="top_opts">
-  <ul class="ul_top_opts">
-	<li class="li_top_opts"><a class="a_top_opt t_opt_add txhd" href="addLottery.html">新增</a></li>
-	<!-- <li class="li_top_opts"><a class="a_top_opt t_opt_remove txhd" href="#">删除</a></li> -->
-  </ul>
-</div>
-<div class="search_wrapper">
-  <input type="search" class="search_box" id="js_quicksearch" name="q" placeholder=" 搜索..." />
-</div>

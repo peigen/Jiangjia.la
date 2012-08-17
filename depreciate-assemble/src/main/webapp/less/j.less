@@ -8,6 +8,8 @@
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
 @import "mixins.less";
 
+@import "dropdowns.less";
+
 /* ==|== primary styles =====================================================
    Author: Dr_rOot
    ========================================================================== */
@@ -23,7 +25,7 @@ body {
     line-height: @baseLineHeight;
     color: @textColor;
     background-color: @bodyBackground;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 a {
     color: @linkColor;
@@ -51,7 +53,198 @@ figure {
     margin: 0;
 }
 
+#overlays {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 999999;
+    -webkit-backface-visibility: hidden;
+}
 
+/*$Notifications*/
+#notifications {
+    top: 20px;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    background: #fff;
+    background: -webkit-linear-gradient(#fff, #dbdbdb);
+    background: -moz-linear-gradient(#fff, #dbdbdb);
+    border-radius: 6px;
+    -webkit-box-shadow: white 0px -1px 0px inset, rgba(0,0,0,0.5) 0px 4px 20px;
+    -moz-box-shadow: white 0px -1px 0px inset, rgba(0,0,0,0.5) 0px 4px 20px;
+    box-shadow: white 0px -1px 0px inset, rgba(0,0,0,0.5) 0px 4px 20px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    max-height: 529px;
+    overflow-y: hidden;
+    text-shadow: white 0px 1px 0px;
+}
+body.welcome #notifications {
+    max-height: 185px;
+}
+.notification {
+    position: relative;
+}
+.notification.more {
+    border-bottom: 1px solid #c1c1c1;
+    -webkit-box-shadow: white 0px 1px 0px;
+    -moz-box-shadow: white 0px 1px 0px;
+    box-shadow: white 0px 1px 0px;
+}
+.notification.error {
+    background: #FA565D;
+    background: -webkit-linear-gradient(#FA565D, #D1363D);
+    background: -moz-linear-gradient(#FA565D, #D1363D);
+    .border-radius(5px);
+}
+.notification.error * {
+    color: white!important;
+    text-shadow: rgba(0,0,0,0.4) 0px 1px 1px!important;
+}
+.notification.error .left:after {
+    background: rgba(255,255,255,0.5)!important;
+    box-shadow: rgba(0,0,0,0.4) 0px 1px 1px!important;
+}
+.notification.click {
+    cursor: pointer;
+}
+.notification .hide, .modal .hide {
+    position: absolute;
+    display: block;
+    right: 5px;
+    top: 7px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    width: 12px;
+    height: 12px;
+    background: url(../img/icon-close.png) no-repeat;
+    opacity: 0.7;
+    display: none;
+    text-indent: -999px;
+    overflow: hidden;
+}
+.modal .hide:before {
+    position: relative;
+    top: 3px;
+}
+.notification .hide:before, .modal .hide:before {
+    content: "x";
+}
+.notification .hide:hover {
+    opacity: 1;
+}
+.notification .right, .notification .left {
+    width: 350px;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.notification .time {
+    font-size: 9px;
+    position: relative;
+}
+.notification .right .time {
+    margin-left: 10px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    opacity: 0.4;
+}
+.notification .left {
+    height: 100%;
+    width: 30px;
+    padding: 10px;
+    position: absolute;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    overflow: hidden;
+}
+.notification .right {
+    margin-left: 50px;
+}
+.notification .right .inner {
+    padding: 10px;
+    line-height: 16px;
+}
+.notification .left:after {
+    content: '';
+    background: #c1c1c1;
+    -webkit-box-shadow: white 1px 0px 0px;
+    -moz-box-shadow: white 1px 0px 0px;
+    box-shadow: white 1px 0px 0px;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.notification .img {
+    width: 30px;
+    background-size: auto 100%;
+    background-position: center;
+    height: 30px;
+    .border-radius(6px);
+    -webkit-box-shadow: rgba(255,255,255,0.9) 0px -1px 0px inset, rgba(0,0,0,0.2) 0px 1px 2px;
+    -moz-box-shadow: rgba(255,255,255,0.9) 0px -1px 0px inset, rgba(0,0,0,0.2) 0px 1px 2px;
+    box-shadow: rgba(255,255,255,0.9) 0px -1px 0px inset, rgba(0,0,0,0.2) 0px 1px 2px;
+    border: 1px solid rgba(0,0,0,0.55);
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+}
+.notification .img.border {
+    box-shadow: none;
+    border: none;
+}
+.notification .img.fill {
+    top: 0px;
+    margin: 0px;
+    border: none;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    .border-radius(0px);
+    -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 0px inset, black -1px 0px 16px inset;
+    -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 0px inset, black -1px 0px 16px inset;
+    box-shadow: rgba(0,0,0,0.2) 0px 1px 0px inset, black -1px 0px 16px inset;
+    background-color: #333;
+}
+.notification:first-child .img.fill {
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.notification:last-child .img.fill {
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.notification .left > .icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    /*font: normal 35px/39px Icons;*/
+    text-shadow: white 0px 1px 0px;
+}
+.notification:after {
+    content: "."; 
+    visibility: hidden; 
+    display: block; 
+    clear: both; 
+    height: 0; 
+    font-size: 0;
+}
+.notification h2 {
+    font-size: 14px;
+    margin: 0 0 4px;
+}
 
 #container {
     .center-block();
@@ -86,8 +279,70 @@ figure {
         font-size: 16px;
         line-height: 16px;
         color: @grayLight;
-        a {
+        & > a {
             margin: 0 8px;
+        }
+        .user_info {
+            font-size: 13px;
+            img {
+                .border-radius(4px);
+                margin: 0 4px;
+            }
+            .caret {
+                margin-top: 13px;
+                margin-right: 6px;
+            }
+            .dropdown-menu {
+                width: 180px;
+                a {
+                    .user-select(none);
+                    /*.transition(background .2s linear);*/
+                }
+                .menu_title {
+                    text-align: center;
+                    margin: 2px 0 4px;
+                    font-size: 14px;
+                }
+                .menu_item {
+                    /*margin-bottom: 2px;*/
+                    a {
+                        .transition(text-indent .2s linear);
+
+                        &:hover {
+                            text-indent: 4px;
+                        }
+                    }
+                }
+                .icon_j_list {
+                    display: inline-block;
+                    .ie7-inline-block();
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+                    background: url(../img/icon_j_list.png) no-repeat;
+                }
+                .icon_j_notify {
+                    display: inline-block;
+                    .ie7-inline-block();
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+                    background: url(../img/icon_j_notify.png) no-repeat;
+                }
+                .sign_out {
+                    color: @btnTextColor;
+                    float: right;
+                    padding: 3px 8px;
+                    margin-right: 4px;
+                    &:hover {
+                        background-color: @btnBackgroundHighlight;
+                    }
+                    &:active {
+                        background-color: #maroon;
+                        .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
+                    }
+                }
+            }
         }
     }
 }
@@ -132,7 +387,10 @@ figure {
                 line-height: 25px;
                 color: @grayLight;
                 text-shadow: 0px 1px 1px @white;
-            }    
+            }
+            .hidden {
+                display: none;
+            }
         }
         .txt_j {
             padding: 10px 9px 8px;
@@ -149,40 +407,49 @@ figure {
         #j_url {
             width: 400px;
         }
-        .btn_j {
-            .size(100px, 40px);
-            margin: 0;
-            padding:0px 10px;
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 40px;
-            color: @btnTextColor;
-            text-shadow: 0px 1px 0px @maroon;
-            background-color: @maroonLight;
-            cursor: pointer;
-            border: 1px solid @maroon;
-            .border-radius(3px);
-            .box-shadow(0px 2px 0px rgba(153, 153, 153, 0.33));
-            .transition(all .1s linear);
-            &:hover {
-                background-color: @btnBackgroundHighlight;
-            }
-            &:active {
-                background-color: #maroon;
-                .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
-            }
-        }
+        
         .terms {
             font-size: 15px;
         }
     }
 }
 
+.btn_j {
+    .size(100px, 40px);
+    margin: 0;
+    padding:0px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+    color: @btnTextColor;
+    text-shadow: 0px 1px 0px @maroon;
+    background-color: @maroonLight;
+    cursor: pointer;
+    border: 1px solid @maroon;
+    .border-radius(3px);
+    .box-shadow(0px 2px 0px rgba(153, 153, 153, 0.33));
+    .transition(all .1s linear);
+    &:hover {
+        background-color: @btnBackgroundHighlight;
+    }
+    &:active {
+        background-color: #maroon;
+        .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
+    }
+}
+
+.btn_j_small {
+    .size(32px, 14px);
+    line-height: 26px;
+    font-size: 14px;
+    padding: 3px 8px;
+}
 
 #ft {
     position: absolute;
     left: 0px;
-    bottom: -90%;
+    bottom: -89%;
     width: 100%;
     min-width: 1100px;
     padding-top: 20px;
@@ -224,7 +491,7 @@ figure {
         }
     }
     &:hover {
-        bottom: -89%;
+        bottom: -88%;
     }
 }
 
@@ -380,7 +647,7 @@ body.sign_up {
         #sign_up {
             display: block;
         }
-        #fm_enter_url, #product_info, #sign_in {
+        #fm_enter_url, #enter_url, #product_info, #sign_in {
             display: none;
         }
     }
@@ -392,7 +659,7 @@ body.sign_in {
         #sign_in {
             display: block;
         }
-        #fm_enter_url, #product_info, #sign_up {
+        #fm_enter_url, #enter_url, #product_info, #sign_up {
             display: none;
         }
     }
@@ -403,6 +670,13 @@ body.sign_in {
         width: 1400px;
     }
 }*/
+@media (min-height: 600px) {
+    body.sign_up, body.sign_in, body.enter_url, body.confirm_submit {
+        #bd {
+            margin-top: 30px;
+        }
+    }
+}
 @media (min-height: 800px) {
     body.sign_up, body.sign_in, body.enter_url, body.confirm_submit {
         #bd {
