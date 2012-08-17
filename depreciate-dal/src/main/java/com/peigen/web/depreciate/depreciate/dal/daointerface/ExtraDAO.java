@@ -1,6 +1,6 @@
 /**
  * jiangjia.la Inc.
- * Copyright (c) 2011 All Rights Reserved.
+ * Copyright (c) 2012 All Rights Reserved.
  */
 package com.peigen.web.depreciate.depreciate.dal.daointerface;
 

@@ -1,6 +1,6 @@
 /**
- * wikiletter.net Inc.
- * Copyright (c) 2011 All Rights Reserved.
+ * jiangjia.la Inc.
+ * Copyright (c) 2012 All Rights Reserved.
  */
 package com.peigen.web.depreciate.test.bootstrap;
 
@@ -44,75 +44,75 @@ import com.peigen.common.lang.util.PrintLogTool;
  *
  */
 public class DepreciateJettyBootStrap {
-
-    private static final String              PROJECT_NAME    = "depreciate-assemble";
-
-    private static final String              WEB_SRC         = PROJECT_NAME + "/src/main/webapp";
-
-    private static Logger                    logger          = LoggerFactory
-                                                                 .getLogger(DepreciateJettyBootStrap.class);
-
-    private static String                    WEBAPP_PATH     = getWebPath();
-
-    private final static int                 port            = 8888;
-
-    //使用者
-    private final static Map<String, String> hostNameMapping = new HashMap<String, String>();
-
-    public DepreciateJettyBootStrap() {
-        hostNameMapping.put("WEBAPP_PATH", WEBAPP_PATH);
-        //		hostNameMapping.put("nuomi-PC", NUOMI_WEBAPP_PATH);
-    }
-
-    public static void main(String[] args) throws Exception {
-        new DepreciateJettyBootStrap();
-        Server server = new Server();
-        QueuedThreadPool threadPool = new QueuedThreadPool();
-        threadPool.setMaxThreads(100);
-        server.setThreadPool(threadPool);
-        Connector connector = new SelectChannelConnector();
-        connector.setPort(port); //端口
-        server.addConnector(connector);
-        WebAppContext context = new WebAppContext(WEBAPP_PATH,
-            DepreciateConstants.SEPARATOR_CHAR_SLASH);
-
-        HandlerCollection handlers = new HandlerCollection();
-        handlers.setHandlers(new Handler[] { context, new DefaultHandler() });
-        server.setHandler(handlers);
-
-        server.setStopAtShutdown(true);
-        server.setSendServerVersion(true);
-        server.start();
-        PrintLogTool.info("启动完毕", logger);
-        server.join();
-
-    }
-
-    /**
-     * 
-     * @param properties
-     * @return
-     */
-    @SuppressWarnings("unused")
-    private static String loadHostName() {
-        try {
-            InetAddress addr = InetAddress.getLocalHost();
-            String hostname = addr.getHostName().toString();// 获得本机名称
-            PrintLogTool.info(hostname, logger);
-            return hostNameMapping.get(hostname);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    private static String getWebPath() {
-        String currentClassPath = DepreciateJettyBootStrap.class.getResource(
-            DepreciateConstants.SEPARATOR_CHAR_SLASH).getPath();
-
-        String webPath = currentClassPath.substring(0, currentClassPath.indexOf(PROJECT_NAME))
-                         + WEB_SRC;
-        return webPath;
-    }
+	
+	private static final String					PROJECT_NAME	= "depreciate-assemble";
+	
+	private static final String					WEB_SRC			= PROJECT_NAME + "/src/main/webapp";
+	
+	private static Logger						logger			= LoggerFactory
+																	.getLogger(DepreciateJettyBootStrap.class);
+	
+	private static String						WEBAPP_PATH		= getWebPath();
+	
+	private final static int					port			= 8888;
+	
+	//使用者
+	private final static Map<String, String>	hostNameMapping	= new HashMap<String, String>();
+	
+	public DepreciateJettyBootStrap() {
+		hostNameMapping.put("WEBAPP_PATH", WEBAPP_PATH);
+		//		hostNameMapping.put("nuomi-PC", NUOMI_WEBAPP_PATH);
+	}
+	
+	public static void main(String[] args) throws Exception {
+		new DepreciateJettyBootStrap();
+		Server server = new Server();
+		QueuedThreadPool threadPool = new QueuedThreadPool();
+		threadPool.setMaxThreads(100);
+		server.setThreadPool(threadPool);
+		Connector connector = new SelectChannelConnector();
+		connector.setPort(port); //端口
+		server.addConnector(connector);
+		WebAppContext context = new WebAppContext(WEBAPP_PATH,
+			DepreciateConstants.SEPARATOR_CHAR_SLASH);
+		
+		HandlerCollection handlers = new HandlerCollection();
+		handlers.setHandlers(new Handler[] { context, new DefaultHandler() });
+		server.setHandler(handlers);
+		
+		server.setStopAtShutdown(true);
+		server.setSendServerVersion(true);
+		server.start();
+		PrintLogTool.info("启动完毕", logger);
+		server.join();
+		
+	}
+	
+	/**
+	 * 
+	 * @param properties
+	 * @return
+	 */
+	@SuppressWarnings("unused")
+	private static String loadHostName() {
+		try {
+			InetAddress addr = InetAddress.getLocalHost();
+			String hostname = addr.getHostName().toString();// 获得本机名称
+			PrintLogTool.info(hostname, logger);
+			return hostNameMapping.get(hostname);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	private static String getWebPath() {
+		String currentClassPath = DepreciateJettyBootStrap.class.getResource(
+			DepreciateConstants.SEPARATOR_CHAR_SLASH).getPath();
+		
+		String webPath = currentClassPath.substring(0, currentClassPath.indexOf(PROJECT_NAME))
+							+ WEB_SRC;
+		return webPath;
+	}
 }
