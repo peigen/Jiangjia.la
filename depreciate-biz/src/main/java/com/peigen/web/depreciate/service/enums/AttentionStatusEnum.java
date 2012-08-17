@@ -29,10 +29,10 @@ import java.util.List;
 public enum AttentionStatusEnum {
 	
 	/** 未知异常 */
-	FO("FO", "关注"),
+	FOLLOW("FOLLOW", "关注"),
 	
 	/** 执行成功 */
-	UNFO("UNFO", "未关注");
+	UN_FOLLOW("UN_FOLLOW", "未关注");
 	
 	/** 枚举值 */
 	private final String	code;

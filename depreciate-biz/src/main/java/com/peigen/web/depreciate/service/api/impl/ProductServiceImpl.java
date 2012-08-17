@@ -84,7 +84,7 @@ public class ProductServiceImpl extends ProductServiceBase implements ProductSer
 				
 				UserAttentionInfo userAttentionInfo = new UserAttentionInfo();
 				userAttentionInfo.setRawAddTime(getSysdate());
-				userAttentionInfo.setStatus(AttentionStatusEnum.FO);
+				userAttentionInfo.setStatus(AttentionStatusEnum.FOLLOW);
 				userAttentionInfo.setProductInfo(productInfo);
 				userAttentionInfo.setUserId(productOrder.getUserId());
 				
@@ -145,7 +145,7 @@ public class ProductServiceImpl extends ProductServiceBase implements ProductSer
 				
 				UserAttentionInfo userAttentionInfo = new UserAttentionInfo();
 				userAttentionInfo.setRawAddTime(getSysdate());
-				userAttentionInfo.setStatus(AttentionStatusEnum.FO);
+				userAttentionInfo.setStatus(AttentionStatusEnum.FOLLOW);
 				userAttentionInfo.setProductInfo(productInfo);
 				userAttentionInfo.setUserId(productOrder.getUserId());
 				

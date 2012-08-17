@@ -58,13 +58,7 @@ public class ProductPicRepositoryImpl extends RepositoryBase implements ProductP
 		
 		ProductPicConvertor.convert(productPic, productPicInfo);
 		
-		// 存入云端存储
-		PicBucketInfo bucket = new PicBucketInfo(productPicInfo.getProductId()
-													+ DepreciateConstants.SEPARATOR_CHAR_HYPHEN
-													+ productPicInfo.getPicName(), null,
-			productPicInfo.getCategory(), productPicInfo.getProductId(),
-			productPicInfo.getPicSourceUrl());
-		picBucketService.addPic(bucket);
+		//		storePicToYupoo(productPicInfo);
 		
 		try {
 			depreciateProductPicDAO.insert(productPic);
@@ -73,6 +67,16 @@ public class ProductPicRepositoryImpl extends RepositoryBase implements ProductP
 			throw new DepreciateException(DepreciateResultEnum.SQL_EXCEPTION);
 		}
 		
+	}
+	
+	// 存入云端存储
+	private void storePicToYupoo(ProductPicInfo productPicInfo) {
+		PicBucketInfo bucket = new PicBucketInfo(productPicInfo.getProductId()
+													+ DepreciateConstants.SEPARATOR_CHAR_HYPHEN
+													+ productPicInfo.getPicName(), null,
+			productPicInfo.getCategory(), productPicInfo.getProductId(),
+			productPicInfo.getPicSourceUrl());
+		picBucketService.addPic(bucket);
 	}
 	
 }

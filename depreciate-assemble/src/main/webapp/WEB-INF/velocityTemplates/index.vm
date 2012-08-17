@@ -65,7 +65,7 @@
         <header id="hd">
             <h1 class="logo"><a class="ir switch" data-panel-name="enter_url" href="" title="降价啦 &#991; Jiangjia.la">降价啦！</a></h1>
             <nav class="top_nav">
-                <a class="switch" data-panel-name="sign_up" href="#sign_up">注册</a>&#9752;<a class="switch" data-panel-name="sign_in" href="#sign_in">登录</a>
+                $!result<a class="switch" data-panel-name="sign_up" href="#sign_up">注册 $!userInfo</a>&#9752;<a class="switch" data-panel-name="sign_in" href="#sign_in">登录</a>
             </nav>
         </header>
         <div id="bd" role="main">
@@ -106,20 +106,20 @@
                 </div>
             </div>
             <div id="sign_up">
-                <form id="fm_sign_up" action="" method="POST" class="fm_j cf">
+                <form id="fm_sign_up" action="/signUp.html" method="POST" class="fm_j cf">
                     <div class="ipt_wrapper">
                         <label class="lb_placeholder" for="j_u_email">您常用的电子邮箱</label>
                         <input type="text" class="txt_j" id="j_u_email" autofocus="autofocus" tabindex="1" name="email" />
                     </div>
                     <div class="ipt_wrapper">
                         <label class="lb_placeholder" for="j_u_pwd">密码</label>
-                        <input type="password" class="txt_j" id="j_u_pwd" tabindex="2" name="" />
+                        <input type="password" class="txt_j" id="j_u_pwd" tabindex="2" name="password" />
                     </div>
                     <div class="ipt_wrapper">
                         <button type="submit" class="btn_j" tabindex="3">我要注册</button>
                     </div>
                     <div class="terms">
-                        <label for="j_u_terms"><input type="checkbox" id="j_u_terms" class="chk_j" name="" /> 我已阅读并同意</label><a href="terms">《降价啦服务条款》</a>
+                        <label for="j_u_terms"><input type="checkbox" id="j_u_terms" class="chk_j" checked="true" name="" /> 我已阅读并同意</label><a href="terms">《降价啦服务条款》</a>
                     </div>
                 </form>
             </div>
