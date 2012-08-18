@@ -267,6 +267,7 @@ textarea {
    ========================================================================== */
 html {
   height: 100%;
+  overflow-y: hidden;
 }
 body {
   position: relative;

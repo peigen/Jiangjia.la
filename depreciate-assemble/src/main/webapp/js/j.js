@@ -25,15 +25,17 @@ var Drj = (function(win, $, undefined) {
 
 	$.fn.placeholder = function(options) {
 
-        // 插件默认参数
+        // 默认配置参数
         var defaults = {
             focusedClass: 'hidden',
             triggerMode: 'keyup'
         }
 
+        // 合并自定义参数后的配置参数
         var opts = $.extend({}, defaults, options);
 
         return this.each(function() {
+
             var $input = $(this);
             var inputValue = $input.val();
             var _placeholder = $input.attr('id');
@@ -68,7 +70,7 @@ var Drj = (function(win, $, undefined) {
 
 })(jQuery);
 
-// @PLUGIN Owl Notifications | http://std.li/07 | Made by me | You are only allowed to use the script in this project
+// @PLUGIN Owl Notifications | http://codecanyon.net/item/owl-unobtrusive-css3-notifications/408575
 (function ($) {
     $.notification = function (settings) {
         var con, notification, hide, image, right, left, inner;
@@ -275,6 +277,8 @@ var Drj = (function(win, $, undefined) {
     }
 })(jQuery);
 
+
+// 初始化
 jQuery(function ($) {
 	var $switch = $('.switch');
 	var $body = $('body');
