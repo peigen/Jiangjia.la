@@ -53,6 +53,260 @@ figure {
     margin: 0;
 }
 
+#container {
+    .center-block();
+    width: 1100px;
+}
+
+#hd {
+    position: relative;
+    height: 92px;
+    .logo {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        margin: 0;
+        a {
+            display: block;
+            .size(242px, 77px);
+            overflow: hidden;
+            background: url(../img/logo.png) no-repeat;
+            /*-webkit-backface-visibility: hidden;
+            -webkit-transform-style: preserve-3d;
+            .transition(all .3s ease-in-out);
+            &:hover {
+                .rotate(-2deg);
+            }*/
+        }
+    }
+    .top_nav {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        font-size: 16px;
+        line-height: 16px;
+        color: @grayLight;
+        & > a {
+            margin: 0 8px;
+        }
+        .user_info {
+            font-size: 13px;
+            img {
+                .border-radius(4px);
+                margin: 0 4px;
+            }
+            .caret {
+                margin-top: 13px;
+                margin-right: 6px;
+            }
+            .dropdown-menu {
+                width: 180px;
+                a {
+                    .user-select(none);
+                    /*.transition(background .2s linear);*/
+                }
+                .menu_title {
+                    text-align: center;
+                    margin: 2px 0 4px;
+                    font-size: 14px;
+                }
+                .menu_item {
+                    /*margin-bottom: 2px;*/
+                    a {
+                        .transition(text-indent .2s linear);
+
+                        &:hover {
+                            text-indent: 4px;
+                        }
+                    }
+                }
+                .icon_j_list {
+                    display: inline-block;
+                    .ie7-inline-block();
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+                    background: url(../img/icon_j_list.png) no-repeat;
+                }
+                .icon_j_notify {
+                    display: inline-block;
+                    .ie7-inline-block();
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+                    background: url(../img/icon_j_notify.png) no-repeat;
+                }
+                .sign_out {
+                    color: @btnTextColor;
+                    float: right;
+                    padding: 3px 8px;
+                    margin-right: 4px;
+                    &:hover {
+                        background-color: @btnBackgroundHighlight;
+                    }
+                    &:active {
+                        background-color: #maroon;
+                        .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+#bd {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 640px;
+    margin-top: -25%;
+    margin-left: -320px;
+    .transition(all .2s linear);
+    #squid {
+        width: 380px;
+        margin: 0 auto;
+        color: @blueGreenDark;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
+        .squid_message {
+            display: none;
+        }
+        .j_squid {
+            float: right;
+            width: 380px;
+        }
+    }
+    #enter_url {
+        padding-top: 20px; 
+    }
+    .fm_j {
+        font-size: 14px;
+        text-align: center;
+        color: @blueGreen;
+        text-shadow: 0px 1px 1px @white;
+        .ipt_wrapper {
+            position: relative;
+            margin: 12px auto;
+            display: inline-block;
+            .ie7-inline-block();
+            .lb_placeholder {
+                position: absolute;
+                top: 9px;
+                left: 10px;
+                display: block;
+                height: 18px;
+                font-size: 16px;
+                line-height: 25px;
+                color: @grayLight;
+                text-shadow: 0px 1px 1px @white;
+            }
+            .hidden {
+                display: none;
+            }
+        }
+        .txt_j {
+            padding: 10px 9px 8px;
+            .size(240px, 20px);
+            font-size: 16px;
+            line-height: 25px;
+            background-color: @inputBackground;
+            color: @inputTextColor;
+            text-shadow: 0px 1px 1px @white;
+            border: 1px solid @maroon;
+            .border-radius(3px);
+            .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.38)");
+        }
+        #j_url {
+            width: 400px;
+        }
+        
+        .terms {
+            font-size: 15px;
+        }
+    }
+}
+
+.btn_j {
+    .size(100px, 40px);
+    margin: 0;
+    padding:0px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+    color: @btnTextColor;
+    text-shadow: 0px 1px 0px @maroon;
+    background-color: @maroonLight;
+    cursor: pointer;
+    border: 1px solid @maroon;
+    .border-radius(3px);
+    .box-shadow(0px 2px 0px rgba(153, 153, 153, 0.33));
+    .transition(all .1s linear);
+    &:hover {
+        background-color: @btnBackgroundHighlight;
+    }
+    &:active {
+        background-color: #maroon;
+        .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
+    }
+}
+
+.btn_j_small {
+    .size(32px, 14px);
+    line-height: 26px;
+    font-size: 14px;
+    padding: 3px 8px;
+}
+
+#ft {
+    position: absolute;
+    left: 0px;
+    bottom: -89%;
+    width: 100%;
+    min-width: 1100px;
+    padding-top: 20px;
+    background: url(../img/wave.png) repeat-x;
+    height: 100%;
+    /*padding-bottom: 100%;*/
+    /*margin-bottom: 100%;*/
+    color: @blueGreen;
+    .transition(bottom .5s ease-out);
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+    .siteinfo {
+        height: 100%;
+        font-size: 14px;
+        font-family: @sansFontFamily;
+        text-align: center;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7);
+        background: #aadde4 url(../img/ft_bg.png) repeat;
+        a {
+            color: @blueGreenLight;
+            .transition(color .2s linear);
+            &:hover {
+                color: @blueGreen;
+            }
+        }
+        p {
+            margin: 0;
+            &.copyright {
+                padding: 10px 0;
+            }
+            &.links {
+                font-size: 12px;
+                span {
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+    &:hover {
+        bottom: -88%;
+    }
+}
+
 #overlays {
     position: fixed;
     top: 0px;
@@ -246,256 +500,6 @@ body.welcome #notifications {
     margin: 0 0 4px;
 }
 
-#container {
-    .center-block();
-    width: 1100px;
-}
-
-#hd {
-    position: relative;
-    height: 92px;
-    .logo {
-        position: absolute;
-        top: 15px;
-        left: 10px;
-        margin: 0;
-        a {
-            display: block;
-            .size(242px, 77px);
-            overflow: hidden;
-            background: url(../img/logo.png) no-repeat;
-            /*-webkit-backface-visibility: hidden;
-            -webkit-transform-style: preserve-3d;
-            .transition(all .3s ease-in-out);
-            &:hover {
-                .rotate(-2deg);
-            }*/
-        }
-    }
-    .top_nav {
-        position: absolute;
-        top: 15px;
-        right: 10px;
-        font-size: 16px;
-        line-height: 16px;
-        color: @grayLight;
-        & > a {
-            margin: 0 8px;
-        }
-        .user_info {
-            font-size: 13px;
-            img {
-                .border-radius(4px);
-                margin: 0 4px;
-            }
-            .caret {
-                margin-top: 13px;
-                margin-right: 6px;
-            }
-            .dropdown-menu {
-                width: 180px;
-                a {
-                    .user-select(none);
-                    /*.transition(background .2s linear);*/
-                }
-                .menu_title {
-                    text-align: center;
-                    margin: 2px 0 4px;
-                    font-size: 14px;
-                }
-                .menu_item {
-                    /*margin-bottom: 2px;*/
-                    a {
-                        .transition(text-indent .2s linear);
-
-                        &:hover {
-                            text-indent: 4px;
-                        }
-                    }
-                }
-                .icon_j_list {
-                    display: inline-block;
-                    .ie7-inline-block();
-                    width: 16px;
-                    height: 16px;
-                    vertical-align: middle;
-                    background: url(../img/icon_j_list.png) no-repeat;
-                }
-                .icon_j_notify {
-                    display: inline-block;
-                    .ie7-inline-block();
-                    width: 16px;
-                    height: 16px;
-                    vertical-align: middle;
-                    background: url(../img/icon_j_notify.png) no-repeat;
-                }
-                .sign_out {
-                    color: @btnTextColor;
-                    float: right;
-                    padding: 3px 8px;
-                    margin-right: 4px;
-                    &:hover {
-                        background-color: @btnBackgroundHighlight;
-                    }
-                    &:active {
-                        background-color: #maroon;
-                        .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-#bd {
-    margin-top: 50px;
-    .transition(all .2s linear);
-    #squid {
-        width: 380px;
-        margin: 0 auto;
-        color: @blueGreenDark;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
-        .squid_message {
-            display: none;
-        }
-        .j_squid {
-            float: right;
-            width: 380px;
-        }
-    }
-    #enter_url {
-        padding-top: 20px; 
-    }
-    .fm_j {
-        font-size: 14px;
-        text-align: center;
-        color: @blueGreen;
-        text-shadow: 0px 1px 1px @white;
-        .ipt_wrapper {
-            position: relative;
-            margin: 12px auto;
-            display: inline-block;
-            .ie7-inline-block();
-            .lb_placeholder {
-                position: absolute;
-                top: 9px;
-                left: 10px;
-                display: block;
-                height: 18px;
-                font-size: 16px;
-                line-height: 25px;
-                color: @grayLight;
-                text-shadow: 0px 1px 1px @white;
-            }
-            .hidden {
-                display: none;
-            }
-        }
-        .txt_j {
-            padding: 10px 9px 8px;
-            .size(240px, 20px);
-            font-size: 16px;
-            line-height: 25px;
-            background-color: @inputBackground;
-            color: @inputTextColor;
-            text-shadow: 0px 1px 1px @white;
-            border: 1px solid @maroon;
-            .border-radius(3px);
-            .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.38)");
-        }
-        #j_url {
-            width: 400px;
-        }
-        
-        .terms {
-            font-size: 15px;
-        }
-    }
-}
-
-.btn_j {
-    .size(100px, 40px);
-    margin: 0;
-    padding:0px 10px;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 40px;
-    text-align: center;
-    color: @btnTextColor;
-    text-shadow: 0px 1px 0px @maroon;
-    background-color: @maroonLight;
-    cursor: pointer;
-    border: 1px solid @maroon;
-    .border-radius(3px);
-    .box-shadow(0px 2px 0px rgba(153, 153, 153, 0.33));
-    .transition(all .1s linear);
-    &:hover {
-        background-color: @btnBackgroundHighlight;
-    }
-    &:active {
-        background-color: #maroon;
-        .box-shadow(~"0px 2px 0px rgba(153, 153, 153, 0.33), inset 0px 2px 3px rgba(0, 0, 0, 0.3)");
-    }
-}
-
-.btn_j_small {
-    .size(32px, 14px);
-    line-height: 26px;
-    font-size: 14px;
-    padding: 3px 8px;
-}
-
-#ft {
-    position: absolute;
-    left: 0px;
-    bottom: -89%;
-    width: 100%;
-    min-width: 1100px;
-    padding-top: 20px;
-    background: url(../img/wave.png) repeat-x;
-    height: 100%;
-    /*padding-bottom: 100%;*/
-    /*margin-bottom: 100%;*/
-    color: @blueGreen;
-    .transition(bottom .4s ease-out);
-    -webkit-animation-duration: 2s;
-    -moz-animation-duration: 2s;
-    -o-animation-duration: 2s;
-    animation-duration: 2s;
-    .siteinfo {
-        height: 100%;
-        font-size: 14px;
-        font-family: @sansFontFamily;
-        text-align: center;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7);
-        background: #aadde4 url(../img/ft_bg.png) repeat;
-        a {
-            color: @blueGreenLight;
-            .transition(color .2s linear);
-            &:hover {
-                color: @blueGreen;
-            }
-        }
-        p {
-            margin: 0;
-            &.copyright {
-                padding: 10px 0;
-            }
-            &.links {
-                font-size: 12px;
-                span {
-                    margin: 0 5px;
-                }
-            }
-        }
-    }
-    &:hover {
-        bottom: -88%;
-    }
-}
-
-
 body.enter_url {
     #bd {
         #fm_enter_url {
@@ -643,7 +647,7 @@ body.confirm_submit {
 
 body.sign_up {
     #bd {
-        margin-top: 20px;
+        /*margin-top: 20px;*/
         #sign_up {
             display: block;
         }
@@ -655,7 +659,7 @@ body.sign_up {
 
 body.sign_in {
     #bd {
-        margin-top: 20px;
+        /*margin-top: 20px;*/
         #sign_in {
             display: block;
         }
@@ -673,14 +677,14 @@ body.sign_in {
 @media (min-height: 600px) {
     body.sign_up, body.sign_in, body.enter_url, body.confirm_submit {
         #bd {
-            margin-top: 30px;
+            /*margin-top: 30px;*/
         }
     }
 }
 @media (min-height: 800px) {
     body.sign_up, body.sign_in, body.enter_url, body.confirm_submit {
         #bd {
-            margin-top: 100px;
+            /*margin-top: 100px;*/
         }
     }
 }

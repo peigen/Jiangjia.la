@@ -62,7 +62,7 @@
 </head>
 <body class="enter_url">
     <div id="container" class="cf">
-        <header id="hd">
+        <header id="hd" class="animated fadeInDown">
             <h1 class="logo"><a class="ir switch" data-panel-name="enter_url" href="" title="降价啦 &#991; Jiangjia.la">降价啦！</a></h1>
             <nav class="top_nav">
                 <!-- <a class="switch" data-panel-name="sign_up" href="#sign_up">注册</a>&#9752;<a class="switch" data-panel-name="sign_in" href="#sign_in">登录</a> -->
@@ -80,7 +80,7 @@
                 </div>
             </nav>
         </header>
-        <div id="bd" role="main">
+        <div id="bd" role="main" class="animated fadeInUp">
             <div id="squid" class="cf">
                 <article class="squid_message">
                     <section class="message_body">
@@ -164,6 +164,5 @@
     <script src="js/libs/jquery.min.js"></script>
     <script src="js/plugins/bootstrap-dropdown.js"></script>
     <script src="js/j.js"></script>
-    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>
