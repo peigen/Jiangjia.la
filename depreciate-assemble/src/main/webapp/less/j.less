@@ -160,7 +160,7 @@ figure {
     top: 50%;
     left: 50%;
     width: 640px;
-    margin-top: -25%;
+    margin-top: -28%;
     margin-left: -320px;
     .transition(all .2s linear);
     #squid {
@@ -505,7 +505,7 @@ body.enter_url {
         #fm_enter_url {
             display: block;
         }
-        #product_info, #confirm, #sign_up, #sign_in {
+        #product_info, #confirm, #sign_up, #sign_in, #e404 {
             display: none;
         }
     }
@@ -577,7 +577,7 @@ body.confirm_submit {
         #enter_url, #product_info, #confirm {
             display: block;
         }
-        #fm_enter_url, #sign_up, #sign_in {
+        #fm_enter_url, #sign_up, #sign_in, #e404 {
             display: none;
         }
         #product_info {
@@ -651,7 +651,7 @@ body.sign_up {
         #sign_up {
             display: block;
         }
-        #fm_enter_url, #enter_url, #product_info, #sign_in {
+        #fm_enter_url, #enter_url, #product_info, #sign_in, #e404 {
             display: none;
         }
     }
@@ -663,8 +663,22 @@ body.sign_in {
         #sign_in {
             display: block;
         }
-        #fm_enter_url, #enter_url, #product_info, #sign_up {
+        #fm_enter_url, #enter_url, #product_info, #sign_up, #e404 {
             display: none;
+        }
+    }
+}
+
+body.error_404 {
+    #bd {
+        margin-top: -18%;
+        #squid, #fm_enter_url, #enter_url, #product_info, #sign_up, #sign_in {
+            display: none;
+        }
+        #e404 {
+            margin: 0 auto;
+            .size(320px, 144px);
+            background: url(../img/j_404.png) no-repeat;
         }
     }
 }

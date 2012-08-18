@@ -428,7 +428,7 @@ figure {
   top: 50%;
   left: 50%;
   width: 640px;
-  margin-top: -25%;
+  margin-top: -28%;
   margin-left: -320px;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
@@ -811,7 +811,8 @@ body.enter_url #bd #fm_enter_url {
 body.enter_url #bd #product_info,
 body.enter_url #bd #confirm,
 body.enter_url #bd #sign_up,
-body.enter_url #bd #sign_in {
+body.enter_url #bd #sign_in,
+body.enter_url #bd #e404 {
   display: none;
 }
 body.confirm_submit #bd #squid {
@@ -887,7 +888,8 @@ body.confirm_submit #bd #confirm {
 }
 body.confirm_submit #bd #fm_enter_url,
 body.confirm_submit #bd #sign_up,
-body.confirm_submit #bd #sign_in {
+body.confirm_submit #bd #sign_in,
+body.confirm_submit #bd #e404 {
   display: none;
 }
 body.confirm_submit #bd #product_info {
@@ -975,7 +977,8 @@ body.sign_up #bd #sign_up {
 body.sign_up #bd #fm_enter_url,
 body.sign_up #bd #enter_url,
 body.sign_up #bd #product_info,
-body.sign_up #bd #sign_in {
+body.sign_up #bd #sign_in,
+body.sign_up #bd #e404 {
   display: none;
 }
 body.sign_in #bd {
@@ -988,8 +991,26 @@ body.sign_in #bd #sign_in {
 body.sign_in #bd #fm_enter_url,
 body.sign_in #bd #enter_url,
 body.sign_in #bd #product_info,
-body.sign_in #bd #sign_up {
+body.sign_in #bd #sign_up,
+body.sign_in #bd #e404 {
   display: none;
+}
+body.error_404 #bd {
+  margin-top: -18%;
+}
+body.error_404 #bd #squid,
+body.error_404 #bd #fm_enter_url,
+body.error_404 #bd #enter_url,
+body.error_404 #bd #product_info,
+body.error_404 #bd #sign_up,
+body.error_404 #bd #sign_in {
+  display: none;
+}
+body.error_404 #bd #e404 {
+  margin: 0 auto;
+  width: 320px;
+  height: 144px;
+  background: url(../img/j_404.png) no-repeat;
 }
 /*@media (min-width: 1600px) {
     #container {

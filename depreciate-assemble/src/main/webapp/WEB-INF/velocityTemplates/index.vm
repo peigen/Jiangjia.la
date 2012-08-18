@@ -150,6 +150,7 @@
                     </div>
                 </form>
             </div>
+            <div id="e404" class="ir">404</div>
         </div>
     </div>
     <footer id="ft" class="animated">
