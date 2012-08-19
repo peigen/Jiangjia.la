@@ -98,11 +98,11 @@
                 </figure>
             </div>
             <div id="enter_url">
-                <form id="fm_enter_url" action="/addProduct.html" method="post" class="fm_j cf">
+                <form id="fm_enter_url" action="/addProduct.html" method="GET" class="fm_j cf">
                     <div class="ipt_wrapper">
                         <!-- <label class="lb_placeholder" for="j_url">请贴入商品的URL地址</label> -->
                         <input type="text" class="txt_j" id="j_url" autofocus="autofocus" tabindex="1" name="productUrl" placeholder="请贴入商品的URL地址" />
-                        <button type="submit" class="btn_j btn_j_url switch" data-panel-name="confirm_submit" tabindex="2">坐等降价</button>
+                        <button type="submit" class="btn_j btn_j_url" data-panel-name="confirm_submit" tabindex="2">坐等降价</button>
                     </div>
                 </form>
                 <div id="product_info" class="loading">
