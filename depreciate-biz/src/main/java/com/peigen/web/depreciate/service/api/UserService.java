@@ -5,8 +5,8 @@
 package com.peigen.web.depreciate.service.api;
 
 import com.peigen.web.depreciate.service.order.ProductOrder;
-import com.peigen.web.depreciate.service.order.UserSigninOrder;
-import com.peigen.web.depreciate.service.order.UserSignupOrder;
+import com.peigen.web.depreciate.service.order.UserSignInOrder;
+import com.peigen.web.depreciate.service.order.UserSignUpOrder;
 import com.peigen.web.depreciate.service.result.UserResult;
 
 /**
@@ -52,7 +52,7 @@ public interface UserService {
 	 * @param signUpOrder
 	 * @return
 	 */
-	public UserResult signUp(UserSignupOrder signUpOrder);
+	public UserResult signUp(UserSignUpOrder signUpOrder);
 	
 	/**
 	 * 通过email注册
@@ -67,5 +67,5 @@ public interface UserService {
 	 * @param signinOrder
 	 * @return
 	 */
-	public UserResult signIn(UserSigninOrder signinOrder);
+	public UserResult signIn(UserSignInOrder signinOrder);
 }

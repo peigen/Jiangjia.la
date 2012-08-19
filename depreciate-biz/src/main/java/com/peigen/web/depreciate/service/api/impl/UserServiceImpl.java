@@ -22,8 +22,8 @@ import com.peigen.web.depreciate.service.enums.UserStatusEnum;
 import com.peigen.web.depreciate.service.exception.DepreciateException;
 import com.peigen.web.depreciate.service.info.UserInfo;
 import com.peigen.web.depreciate.service.order.ProductOrder;
-import com.peigen.web.depreciate.service.order.UserSigninOrder;
-import com.peigen.web.depreciate.service.order.UserSignupOrder;
+import com.peigen.web.depreciate.service.order.UserSignInOrder;
+import com.peigen.web.depreciate.service.order.UserSignUpOrder;
 import com.peigen.web.depreciate.service.result.UserResult;
 
 /**
@@ -72,11 +72,11 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 	/**
 	 * @param signUpOrder
 	 * @return
-	 * @see com.peigen.web.depreciate.service.api.UserService#signUp(com.peigen.web.depreciate.service.order.UserSignupOrder)
+	 * @see com.peigen.web.depreciate.service.api.UserService#signUp(com.peigen.web.depreciate.service.order.UserSignUpOrder)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public UserResult signUp(final UserSignupOrder signUpOrder) {
+	public UserResult signUp(final UserSignUpOrder signUpOrder) {
 		
 		OperationActionEnum action = OperationActionEnum.MEMBER_SIGNUP;
 		PrintLogTool.info("收到" + action.message() + "[signUpOrder=" + signUpOrder + "]", logger);
@@ -259,7 +259,7 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 	 * @see com.peigen.web.depreciate.service.api.UserService#signIn(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public UserResult signIn(final UserSigninOrder signinOrder) {
+	public UserResult signIn(final UserSignInOrder signinOrder) {
 		
 		OperationActionEnum action = OperationActionEnum.MEMBER_SIGNIN;
 		PrintLogTool.info("收到" + action.message() + "[signinOrder=" + signinOrder + "]", logger);

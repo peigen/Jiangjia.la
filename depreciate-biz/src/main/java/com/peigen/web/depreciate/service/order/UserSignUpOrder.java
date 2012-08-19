@@ -13,7 +13,7 @@ import org.springframework.util.Assert;
 
 /**
  *                       
- * @Filename UserSignupOrder.java
+ * @Filename UserSignUpOrder.java
  *
  * @Description 
  *
@@ -30,7 +30,7 @@ import org.springframework.util.Assert;
  *<li>Content: create</li>
  *
  */
-public class UserSignupOrder implements Order {
+public class UserSignUpOrder implements Order {
 	
 	/** Comment for <code>serialVersionUID</code> */
 	private static final long	serialVersionUID	= 7741995543795482671L;
@@ -58,7 +58,7 @@ public class UserSignupOrder implements Order {
 	/**
 	 * 构建一个<code>UserSignupOrder.java</code>
 	 */
-	public UserSignupOrder() {
+	public UserSignUpOrder() {
 		super();
 	}
 	
@@ -67,7 +67,7 @@ public class UserSignupOrder implements Order {
 	 * @param userPasswd
 	 * @param userEmail
 	 */
-	public UserSignupOrder(String userPasswd, String userEmail) {
+	public UserSignUpOrder(String userPasswd, String userEmail) {
 		super();
 		this.userPasswd = userPasswd;
 		this.userEmail = userEmail;

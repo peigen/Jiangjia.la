@@ -18,8 +18,8 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.peigen.web.depreciate.controller.base.UserControllerBase;
 import com.peigen.web.depreciate.form.UserSigninForm;
 import com.peigen.web.depreciate.form.UserSignupForm;
-import com.peigen.web.depreciate.service.order.UserSigninOrder;
-import com.peigen.web.depreciate.service.order.UserSignupOrder;
+import com.peigen.web.depreciate.service.order.UserSignInOrder;
+import com.peigen.web.depreciate.service.order.UserSignUpOrder;
 import com.peigen.web.depreciate.service.result.UserResult;
 import com.peigen.web.depreciate.util.LoginUtil;
 
@@ -49,7 +49,7 @@ public class UserController extends UserControllerBase {
 	public ModelAndView signup(ModelMap modelMap, HttpServletRequest request,
 								UserSignupForm signupForm) {
 		
-		UserSignupOrder signUpOrder = new UserSignupOrder(signupForm.getPassword(),
+		UserSignUpOrder signUpOrder = new UserSignUpOrder(signupForm.getPassword(),
 			signupForm.getEmail());
 		UserResult result = userService.signUp(signUpOrder);
 		
@@ -76,7 +76,7 @@ public class UserController extends UserControllerBase {
 	public ModelAndView signin(ModelMap modelMap, HttpServletRequest request,
 								UserSigninForm signinForm) {
 		
-		UserSigninOrder signinOrder = new UserSigninOrder(signinForm.getPassword(),
+		UserSignInOrder signinOrder = new UserSignInOrder(signinForm.getPassword(),
 			signinForm.getEmail());
 		
 		UserResult result = userService.signIn(signinOrder);
