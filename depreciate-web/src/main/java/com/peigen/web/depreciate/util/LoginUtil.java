@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 
 import com.peigen.common.lang.util.SessionConstant;
 import com.peigen.common.lang.util.StringUtil;
+import com.peigen.web.depreciate.service.info.UserInfo;
 import com.sun.tools.internal.ws.processor.modeler.annotation.MemberInfo;
 
 /**
@@ -88,15 +89,11 @@ public class LoginUtil {
 	 */
 	public static String getCurrentLoginId(HttpServletRequest request) {
 		
-		//		Object object = request.getSession().getAttribute(SessionConstant.SESSION_LOGIN_INFO_KEY);
-		//		
-		//		if (object instanceof MemberInfo) {
-		//			return ((MemberInfo) object).getId();
-		//		}
-		//		
-		//		else if (object instanceof SupplierInfo) {
-		//			return ((SupplierInfo) object).getId();
-		//		}
+		Object object = request.getSession().getAttribute(SessionConstant.SESSION_LOGIN_INFO_KEY);
+		
+		if (object instanceof UserInfo) {
+			return ((UserInfo) object).getId();
+		}
 		
 		return null;
 	}
