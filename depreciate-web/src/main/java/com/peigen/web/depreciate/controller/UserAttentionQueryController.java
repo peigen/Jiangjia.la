@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.peigen.common.lang.util.PrintLogTool;
+import com.peigen.web.depreciate.controller.base.ControllerBase;
 import com.peigen.web.depreciate.service.result.BatchUserAttentionResult;
 
 /**

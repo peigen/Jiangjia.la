@@ -2,7 +2,7 @@
  * www.jiangjia.la Inc.
  * Copyright (c) 2012 All Rights Reserved.
  */
-package com.peigen.web.depreciate.controller;
+package com.peigen.web.depreciate.controller.base;
 
 import javax.servlet.http.HttpServletRequest;
 

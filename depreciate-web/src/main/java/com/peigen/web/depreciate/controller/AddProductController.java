@@ -17,9 +17,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.peigen.common.lang.util.ListUtil;
 import com.peigen.common.lang.util.StringUtil;
 import com.peigen.common.lang.util.money.Money;
+import com.peigen.web.depreciate.controller.base.ControllerBase;
 import com.peigen.web.depreciate.service.order.ProductOrder;
 import com.peigen.web.depreciate.service.order.ProductParaOrder;
 import com.peigen.web.depreciate.service.result.ProductResult;
+import com.peigen.web.depreciate.util.LoginUtil;
 
 /**
  *                       
@@ -43,12 +45,35 @@ import com.peigen.web.depreciate.service.result.ProductResult;
 @Controller
 public class AddProductController extends ControllerBase {
 	
+	@RequestMapping(value = "/addProduct.html", method = { RequestMethod.GET })
+	@ResponseBody
+	public String add(HttpServletRequest request) {
+		
+		String url = getParameterTrim(request, "productUrl");
+		
+		if (StringUtil.isBlank(url)) {
+			JSONObject.toJSONString("狗日，你丫是二啊!");
+		}
+		
+		ProductResult result = new ProductResult();
+		
+		ProductOrder productOrder = new ProductOrder();
+		productOrder.setUrl(url);
+		
+		// 获取用户信息
+		productOrder.setUserId(LoginUtil.getCurrentLoginId(request));
+		
+		result = productService.addProduct(productOrder);
+		
+		return JSONObject.toJSONString(result);
+	}
+	
 	@RequestMapping(value = "/addByEmail.ws", method = { RequestMethod.GET })
 	@ResponseBody
 	public String addByEmail(HttpServletRequest request) {
 		
 		String email = getParameterTrim(request, "email");
-		String url = getParameterTrim(request, "url");
+		String url = getParameterTrim(request, "productUrl");
 		
 		if (StringUtil.isBlank(email) || StringUtil.isBlank(url)) {
 			JSONObject.toJSONString("狗日，你丫是二啊!");
@@ -70,7 +95,7 @@ public class AddProductController extends ControllerBase {
 	public String addByPara(HttpServletRequest request) {
 		
 		String email = getParameterTrim(request, "email");
-		String url = getParameterTrim(request, "url");
+		String url = getParameterTrim(request, "productUrl");
 		String price = getParameterTrim(request, "price");
 		String serialNo = getParameterTrim(request, "serialNo");
 		String imagesStr = getParameterTrim(request, "imagesStr");

@@ -2,7 +2,7 @@
  * www.yiji.com Inc.
  * Copyright (c) 2011 All Rights Reserved.
  */
-package com.peigen.web.depreciate.controller;
+package com.peigen.web.depreciate.controller.base;
 
 import javax.servlet.http.HttpServletRequest;
 
