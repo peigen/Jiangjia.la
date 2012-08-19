@@ -31,6 +31,8 @@ import com.peigen.web.depreciate.test.base.DepreciateServiceTestBase;
 public class ProductServiceTest extends DepreciateServiceTestBase {
 	
 	private String	m18_test_url	= "http://product.m18.com/p-7112705.htm";
+	
+	@SuppressWarnings("unused")
 	private String	dang_test_url	= "http://product.dangdang.com/Product.aspx?product_id=1260888102#ref=www-0-D";
 	
 	@DepreciateTestAnnotated(description = "添加商品测试用例---成功用例")
