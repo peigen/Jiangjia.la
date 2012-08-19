@@ -1,5 +1,5 @@
 /**
- * www.peigen.info Inc.
+ * jiangjia.la Inc.
  * Copyright (c) 2012 All Rights Reserved.
  */
 package com.peigen.web.depreciate.service.constants;
@@ -12,9 +12,9 @@ package com.peigen.web.depreciate.service.constants;
  *
  * @Version 1.0
  *
- * @Author yinsha
+ * @Author peigen
  *
- * @Email yinsha@mbaobao.com
+ * @Email peigen123@gmail.com
  *       
  * @History
  *<li>Author: peigen</li>

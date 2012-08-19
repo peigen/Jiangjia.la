@@ -33,9 +33,9 @@ import com.peigen.common.lang.util.DepreciateConstants;
  *
  * @Version 1.0
  *
- * @Author yinsha
+ * @Author peigen
  *
- * @Email yinsha@mbaobao.com
+ * @Email peigen123@gmail.com
  *       
  * @History
  *<li>Author: peigen</li>

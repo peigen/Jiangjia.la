@@ -1,5 +1,5 @@
 /**
- * www.peigen.info Inc.
+ * jiangjia.la Inc.
  * Copyright (c) 2012 All Rights Reserved.
  */
 package com.peigen.web.depreciate.controller;
@@ -10,10 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
+import com.peigen.web.depreciate.form.UserSigninForm;
 import com.peigen.web.depreciate.form.UserSignupForm;
-import com.peigen.web.depreciate.service.order.UserSignUpOrder;
+import com.peigen.web.depreciate.service.order.UserSigninOrder;
+import com.peigen.web.depreciate.service.order.UserSignupOrder;
 import com.peigen.web.depreciate.service.result.UserResult;
+import com.peigen.web.depreciate.util.LoginUtil;
 
 /**
  *                       
@@ -23,9 +28,9 @@ import com.peigen.web.depreciate.service.result.UserResult;
  *
  * @Version 1.0
  *
- * @Author yinsha
+ * @Author peigen
  *
- * @Email yinsha@mbaobao.com
+ * @Email peigen123@gmail.com
  *       
  * @History
  *<li>Author: peigen</li>
@@ -35,18 +40,60 @@ import com.peigen.web.depreciate.service.result.UserResult;
  *
  */
 @Controller
-public class UserController extends ControllerBase {
+public class UserController extends UserControllerBase {
 	
 	@RequestMapping(value = "/signUp.html", method = { RequestMethod.POST })
-	public String signup(ModelMap modelMap, HttpServletRequest request, UserSignupForm signupForm) {
+	public ModelAndView signup(ModelMap modelMap, HttpServletRequest request,
+								UserSignupForm signupForm) {
 		
-		UserSignUpOrder signUpOrder = new UserSignUpOrder(signupForm.getPassword(),
+		UserSignupOrder signUpOrder = new UserSignupOrder(signupForm.getPassword(),
 			signupForm.getEmail());
 		UserResult result = userService.signUp(signUpOrder);
-		if (result.isExecuted()) {
+		
+		String referUrl = getReferUrl(request);
+		
+		if (isResultSuccess(result)) {
 			modelMap.put("result", "注册成功!");
 			modelMap.put("userInfo", result.getUserInfo());
+			
+			//清理session
+			LoginUtil.cleanSession(request);
+			LoginUtil.updateLoginSession(request, modelMap, result.getUserInfo());
+			// 重定向到来源url
+			return new ModelAndView(new RedirectView(referUrl), modelMap);
 		}
-		return "index.vm";
+		
+		else {
+			
+		}
+		return new ModelAndView(referUrl, modelMap);
+	}
+	
+	@RequestMapping(value = "/signIn.html", method = { RequestMethod.POST })
+	public ModelAndView signin(ModelMap modelMap, HttpServletRequest request,
+								UserSigninForm signinForm) {
+		
+		UserSigninOrder signinOrder = new UserSigninOrder(signinForm.getPassword(),
+			signinForm.getEmail());
+		
+		UserResult result = userService.signIn(signinOrder);
+		
+		String referUrl = getReferUrl(request);
+		
+		if (isResultSuccess(result)) {
+			modelMap.put("result", "登录成功!");
+			modelMap.put("userInfo", result.getUserInfo());
+			
+			//清理session
+			LoginUtil.cleanSession(request);
+			LoginUtil.updateLoginSession(request, modelMap, result.getUserInfo());
+			// 重定向到来源url
+			return new ModelAndView(new RedirectView(referUrl), modelMap);
+		}
+		
+		else {
+			
+		}
+		return new ModelAndView(referUrl, modelMap);
 	}
 }

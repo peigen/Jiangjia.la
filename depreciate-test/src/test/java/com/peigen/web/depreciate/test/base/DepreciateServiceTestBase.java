@@ -14,7 +14,7 @@ import com.peigen.web.depreciate.service.enums.TrackCategoryEnum;
 import com.peigen.web.depreciate.service.info.UserInfo;
 import com.peigen.web.depreciate.service.misc.image.PicBucketService;
 import com.peigen.web.depreciate.service.order.ProductOrder;
-import com.peigen.web.depreciate.service.order.UserSignUpOrder;
+import com.peigen.web.depreciate.service.order.UserSignupOrder;
 import com.peigen.web.depreciate.service.query.ProductQueryService;
 import com.peigen.web.depreciate.service.query.UserAttentionQueryService;
 import com.peigen.web.depreciate.service.result.UserResult;
@@ -85,7 +85,7 @@ public class DepreciateServiceTestBase extends DepreciateDalTestBase {
 		
 		cleanUser(TEST_USER_NAME);
 		
-		UserSignUpOrder signUpOrder = new UserSignUpOrder();
+		UserSignupOrder signUpOrder = new UserSignupOrder();
 		signUpOrder.setUserEmail(TEST_USER_EMAIL);
 		signUpOrder.setUserPasswd(TEST_USER_PASSWD);
 		

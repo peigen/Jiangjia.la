@@ -8,9 +8,9 @@ import java.io.Serializable;
 
 /**
  *                       
- * @Filename UserSignupForm.java
+ * @Filename UserSigninForm.java
  *
- * @Description 
+ * @Description 登录Form
  *
  * @Version 1.0
  *
@@ -25,14 +25,16 @@ import java.io.Serializable;
  *<li>Content: create</li>
  *
  */
-public class UserSignupForm implements Serializable {
+public class UserSigninForm implements Serializable {
 	
 	/** Comment for <code>serialVersionUID</code> */
-	private static final long	serialVersionUID	= -7048861201689995941L;
+	private static final long	serialVersionUID	= 4567914478154151895L;
 	
 	private String				email;
 	
 	private String				password;
+	
+	private String				verificationCode;
 	
 	public String getEmail() {
 		return email;
@@ -50,13 +52,22 @@ public class UserSignupForm implements Serializable {
 		this.password = password;
 	}
 	
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+	
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
+	}
+	
 	/**
 	 * @return
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return String.format("UserSignupForm [email=%s, password=%s]", email, password);
+		return String.format("UserSigninForm [email=%s, password=%s, verificationCode=%s]", email,
+			password, verificationCode);
 	}
 	
 }

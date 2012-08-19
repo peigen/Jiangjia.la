@@ -65,7 +65,7 @@
         <header id="hd" class="animated fadeInDown">
             <h1 class="logo"><a class="ir switch" data-panel-name="enter_url" href="" title="降价啦 &#991; Jiangjia.la">降价啦！</a></h1>
             <nav class="top_nav">
-                <!-- <a class="switch" data-panel-name="sign_up" href="#sign_up">注册</a>&#9752;<a class="switch" data-panel-name="sign_in" href="#sign_in">登录</a> -->
+                #if($!userInfo)
                 <div class="user_info dropdown" id="user_opts">
                     <a href="#user_opts" class="dropdown-toggle" data-toggle="dropdown"><span>agalwood.net@gmail.com</span><img class="avatar" src="img/gravatar.png" width="32" height="32" alt=""><b class="caret"></b></a>
                     <ul class="dropdown-menu pull-right">
@@ -77,7 +77,10 @@
                             <a href="signOut.html" class="btn_j btn_j_small sign_out">登出</a>
                         </li>
                     </ul>
-                </div>
+                </div>                
+                #else
+                <a class="switch" data-panel-name="sign_up" href="#sign_up">注册</a>&#9752;<a class="switch" data-panel-name="sign_in" href="#sign_in">登录</a>
+                #end
             </nav>
         </header>
         <div id="bd" role="main" class="animated fadeInUp">
@@ -118,14 +121,14 @@
                 </div>
             </div>
             <div id="sign_up">
-                <form id="fm_sign_up" action="" method="POST" class="fm_j cf">
+                <form id="fm_sign_up" action="/signUp.html" method="POST" class="fm_j cf">
                     <div class="ipt_wrapper">
                         <label class="lb_placeholder" for="j_u_email">您常用的电子邮箱</label>
                         <input type="text" class="txt_j placeholder" id="j_u_email" tabindex="1" name="email" />
                     </div>
                     <div class="ipt_wrapper">
                         <label class="lb_placeholder" for="j_u_pwd">密码</label>
-                        <input type="password" class="txt_j placeholder" id="j_u_pwd" tabindex="2" name="" />
+                        <input type="password" class="txt_j placeholder" id="j_u_pwd" tabindex="2" name="password" />
                     </div>
                     <div class="ipt_wrapper">
                         <button type="submit" class="btn_j" tabindex="3">我要注册</button>
@@ -136,14 +139,14 @@
                 </form>
             </div>
             <div id="sign_in">
-                <form id="fm_sign_in" action="" method="POST" class="fm_j cf">
+                <form id="fm_sign_in" action="/signIn.html" method="POST" class="fm_j cf">
                     <div class="ipt_wrapper">
                         <label class="lb_placeholder" for="j_i_email">电子邮箱地址</label>
                         <input type="text" class="txt_j placeholder" id="j_i_email" tabindex="1" name="email" />
                     </div>
                     <div class="ipt_wrapper">
                         <label class="lb_placeholder" for="j_i_pwd">密码</label>
-                        <input type="password" class="txt_j placeholder" id="j_i_pwd" tabindex="2" name="" />
+                        <input type="password" class="txt_j placeholder" id="j_i_pwd" tabindex="2" name="password" />
                     </div>
                     <div class="ipt_wrapper">
                         <button type="submit" class="btn_j" tabindex="3">立即登录</button>

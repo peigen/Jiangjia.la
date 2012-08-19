@@ -8,6 +8,9 @@ import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 
+import com.peigen.common.lang.enums.OperationActionEnum;
+import com.peigen.common.lang.util.EncryptionUtil;
+import com.peigen.common.lang.util.EncryptionUtil.DigestALGEnum;
 import com.peigen.common.lang.util.MD5Util;
 import com.peigen.common.lang.util.PrintLogTool;
 import com.peigen.common.lang.util.StringUtil;
@@ -19,7 +22,8 @@ import com.peigen.web.depreciate.service.enums.UserStatusEnum;
 import com.peigen.web.depreciate.service.exception.DepreciateException;
 import com.peigen.web.depreciate.service.info.UserInfo;
 import com.peigen.web.depreciate.service.order.ProductOrder;
-import com.peigen.web.depreciate.service.order.UserSignUpOrder;
+import com.peigen.web.depreciate.service.order.UserSigninOrder;
+import com.peigen.web.depreciate.service.order.UserSignupOrder;
 import com.peigen.web.depreciate.service.result.UserResult;
 
 /**
@@ -68,13 +72,14 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 	/**
 	 * @param signUpOrder
 	 * @return
-	 * @see com.peigen.web.depreciate.service.api.UserService#signUp(com.peigen.web.depreciate.service.order.UserSignUpOrder)
+	 * @see com.peigen.web.depreciate.service.api.UserService#signUp(com.peigen.web.depreciate.service.order.UserSignupOrder)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public UserResult signUp(final UserSignUpOrder signUpOrder) {
+	public UserResult signUp(final UserSignupOrder signUpOrder) {
 		
-		PrintLogTool.info("用户注册[signUpOrder=" + signUpOrder + "]", logger);
+		OperationActionEnum action = OperationActionEnum.MEMBER_SIGNUP;
+		PrintLogTool.info("收到" + action.message() + "[signUpOrder=" + signUpOrder + "]", logger);
 		
 		UserResult result = new UserResult();
 		
@@ -96,7 +101,8 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 						// step2:业务处理
 						//===================================================>
 						userInfo.setStatus(UserStatusEnum.INIT);
-						userInfo.setUserPasswd(MD5Util.MD5Encode(signUpOrder.getUserPasswd()));
+						userInfo.setUserPasswd(EncryptionUtil.encodeWithHexStr(
+							signUpOrder.getUserPasswd(), DigestALGEnum.MD5));
 						userInfo.setRawAddTime(getSysdate());
 						userInfo.setId(getDBKey(TableSeqNameEnum.SEQ_DEPRECIATE_USER));
 						userInfo.setEmail(signUpOrder.getUserEmail());
@@ -148,12 +154,11 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 		}
 		
 		if (result.isSuccess()) {
-			PrintLogTool.info("用户注册成功[user=" + result.getUserInfo() + "]", logger);
+			PrintLogTool.info(action.message() + "成功[user=" + result.getUserInfo() + "]", logger);
 		} else {
 			
-			PrintLogTool.info("用户注册失败[email=" + signUpOrder.getUserEmail() + ",userPasswd="
-								+ signUpOrder.getUserPasswd() + "]", logger);
-			
+			PrintLogTool.info(action.message() + "失败[email=" + signUpOrder.getUserEmail()
+								+ ",userPasswd=" + signUpOrder.getUserPasswd() + "]", logger);
 		}
 		
 		return result;
@@ -254,8 +259,35 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 	 * @see com.peigen.web.depreciate.service.api.UserService#signIn(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public UserResult signIn(String userName, String userPasswd, String verificationCode) {
-		return null;
+	public UserResult signIn(final UserSigninOrder signinOrder) {
+		
+		OperationActionEnum action = OperationActionEnum.MEMBER_SIGNIN;
+		PrintLogTool.info("收到" + action.message() + "[signinOrder=" + signinOrder + "]", logger);
+		
+		UserResult result = new UserResult();
+		
+		try {
+			signinOrder.check();
+			UserInfo userInfo = userLocalCache.getUserByEmail(signinOrder.getUserEmail());
+			if (userInfo != null) {
+				if (StringUtil
+					.equals(userInfo.getUserPasswd(), EncryptionUtil.encodeWithHexStr(
+						signinOrder.getUserPasswd(), DigestALGEnum.MD5))) {
+					setSuccessUserResult(result, userInfo);
+				}
+			}
+		} catch (Exception e) {
+			logger.error(action.message() + "失败", e);
+		}
+		
+		if (result.isSuccess()) {
+			PrintLogTool.info(action.message() + "成功[user=" + result.getUserInfo() + "]", logger);
+		} else {
+			
+			PrintLogTool.info(action.message() + "失败[signinOrder=" + signinOrder + "]", logger);
+		}
+		
+		return result;
 	}
 	
 	// 内部方法

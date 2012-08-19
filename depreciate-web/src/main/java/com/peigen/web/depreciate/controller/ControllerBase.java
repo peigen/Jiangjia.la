@@ -17,6 +17,7 @@ import com.peigen.web.depreciate.service.info.UserInfo;
 import com.peigen.web.depreciate.service.query.ProductQueryService;
 import com.peigen.web.depreciate.service.query.UserAttentionQueryService;
 import com.peigen.web.depreciate.service.query.UserQueryService;
+import com.peigen.web.depreciate.service.result.Result;
 import com.peigen.web.depreciate.service.result.UserResult;
 
 /**
@@ -64,6 +65,18 @@ public class ControllerBase {
 	 */
 	protected String getParameterTrim(HttpServletRequest request, String parameterName) {
 		return StringUtil.trim(request.getParameter(parameterName));
+	}
+	
+	/**
+	 * @param result
+	 * @return
+	 */
+	protected boolean isResultSuccess(Result result) {
+		if (result.isSuccess() && result.isExecuted()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	protected UserInfo getUser(String email) {

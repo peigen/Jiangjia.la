@@ -25,6 +25,7 @@
 	<bean id="userLocalCache" class="com.peigen.web.depreciate.service.cache.impl.UserLocalCacheImpl" />
 	
 	<!-- misc -->
+	<bean id="picBucketService" class="com.peigen.web.depreciate.service.misc.image.PicBucketServiceImpl" />
 	<bean id="lowPicBucket" class="com.peigen.web.depreciate.service.misc.image.UpYun">
 		<constructor-arg name="bucketName" value="pic_low" />
 		<constructor-arg name="userName" value="jiangjiala_auto" />
@@ -43,7 +44,5 @@
 		<constructor-arg name="password" value="peigen*8" />
 	</bean>
 	
-	
-	<bean id="picBucketService" class="com.peigen.web.depreciate.service.misc.image.PicBucketServiceImpl" />
 	
 </beans>

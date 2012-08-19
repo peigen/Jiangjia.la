@@ -7,13 +7,11 @@ package com.peigen.web.depreciate.service.order;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.util.Assert;
 
 /**
  *                       
- * @Filename UserSignupOrder.java
+ * @Filename UserSignUpOrder.java
  *
  * @Description 
  *
@@ -30,14 +28,16 @@ import org.springframework.util.Assert;
  *<li>Content: create</li>
  *
  */
-public class UserSignupOrder implements Order {
+public class UserSigninOrder implements Order {
 	
 	/** Comment for <code>serialVersionUID</code> */
 	private static final long	serialVersionUID	= 7741995543795482671L;
 	
+	private String				userEmail;
+	
 	private String				userPasswd;
 	
-	private String				userEmail;
+	private String				verificationCode;
 	
 	/**
 	 * 
@@ -45,8 +45,8 @@ public class UserSignupOrder implements Order {
 	 */
 	public void check() {
 		
-		Assert.hasText(userPasswd);
 		Assert.hasText(userEmail);
+		Assert.hasText(userPasswd);
 		
 		String regex = "(^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$)";
 		Pattern p = Pattern.compile(regex);
@@ -56,51 +56,45 @@ public class UserSignupOrder implements Order {
 	}
 	
 	/**
-	 * 构建一个<code>UserSignupOrder.java</code>
+	 * 构建一个<code>UserSignUpOrder.java</code>
 	 */
-	public UserSignupOrder() {
+	public UserSigninOrder() {
 		super();
 	}
 	
 	/**
-	 * 构建一个<code>UserSignupOrder.java</code>
+	 * 构建一个<code>UserSignUpOrder.java</code>
 	 * @param userPasswd
 	 * @param userEmail
 	 */
-	public UserSignupOrder(String userPasswd, String userEmail) {
+	public UserSigninOrder(String userPasswd, String userEmail) {
 		super();
 		this.userPasswd = userPasswd;
 		this.userEmail = userEmail;
 	}
 	
-	/**
-	 * @return Returns the userPasswd
-	 */
 	public String getUserPasswd() {
 		return userPasswd;
 	}
 	
-	/**
-	 * @param userPasswd
-	 * The userPasswd to set.
-	 */
 	public void setUserPasswd(String userPasswd) {
 		this.userPasswd = userPasswd;
 	}
 	
-	/**
-	 * @return Returns the userEmail
-	 */
 	public String getUserEmail() {
 		return userEmail;
 	}
 	
-	/**
-	 * @param userEmail
-	 * The userEmail to set.
-	 */
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+	
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+	
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
 	}
 	
 	/**
@@ -109,6 +103,7 @@ public class UserSignupOrder implements Order {
 	 */
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+		return String.format("UserSigninOrder [userPasswd=%s, userEmail=%s, verificationCode=%s]",
+			userPasswd, userEmail, verificationCode);
 	}
 }

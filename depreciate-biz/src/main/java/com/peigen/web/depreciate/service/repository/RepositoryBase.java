@@ -14,6 +14,7 @@ import com.peigen.web.depreciate.depreciate.dal.daointerface.DepreciateProductPi
 import com.peigen.web.depreciate.depreciate.dal.daointerface.DepreciateUserAttentionDAO;
 import com.peigen.web.depreciate.depreciate.dal.daointerface.DepreciateUserDAO;
 import com.peigen.web.depreciate.depreciate.dal.daointerface.ExtraDAO;
+import com.peigen.web.depreciate.service.cache.UserLocalCache;
 
 /**
  *                       
@@ -55,5 +56,8 @@ public class RepositoryBase {
 	
 	@Autowired
 	protected DepreciateUserAttentionDAO	depreciateUserAttentionDAO;
+	
+	@Autowired
+	protected UserLocalCache				userLocalCache;
 	
 }

@@ -48,6 +48,9 @@ public class UserRepositoryImpl extends RepositoryBase implements UserRepository
 		
 		try {
 			depreciateUserDAO.insert(user);
+			
+			// TODO 缓存 之后改成累加,而不是全刷新
+			userLocalCache.initLocalCache();
 		} catch (DuplicateKeyException e) {
 			
 			PrintLogTool.info("用户已存在[userName=" + userInfo.getUserName() + "]", logger);

@@ -24,11 +24,13 @@ import com.peigen.web.depreciate.service.cache.UserLocalCache;
 import com.peigen.web.depreciate.service.enums.DepreciateResultEnum;
 import com.peigen.web.depreciate.service.enums.TableSeqNameEnum;
 import com.peigen.web.depreciate.service.exception.DepreciateException;
+import com.peigen.web.depreciate.service.info.UserInfo;
 import com.peigen.web.depreciate.service.order.Order;
 import com.peigen.web.depreciate.service.repository.ProductChangeLogRepository;
 import com.peigen.web.depreciate.service.repository.ProductRepository;
 import com.peigen.web.depreciate.service.repository.UserAttentionRepository;
 import com.peigen.web.depreciate.service.repository.UserRepository;
+import com.peigen.web.depreciate.service.result.UserResult;
 
 /**
  *                       
@@ -144,5 +146,11 @@ public class DepreciateServiceBase {
 		String src = "0000000" + seq;
 		src = src.substring(src.length() - 8);
 		return src;
+	}
+	
+	protected void setSuccessUserResult(UserResult result, UserInfo userInfo) {
+		result.setSuccess(true);
+		result.setResultCode(DepreciateResultEnum.EXECUTE_SUCCESS);
+		result.setUserInfo(userInfo);
 	}
 }
