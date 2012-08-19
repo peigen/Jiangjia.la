@@ -13,7 +13,6 @@ import org.springframework.ui.ModelMap;
 import com.peigen.common.lang.util.SessionConstant;
 import com.peigen.common.lang.util.StringUtil;
 import com.peigen.web.depreciate.service.info.UserInfo;
-import com.sun.tools.internal.ws.processor.modeler.annotation.MemberInfo;
 
 /**
  *                       
@@ -114,22 +113,6 @@ public class LoginUtil {
 		//		}
 		
 		return null;
-	}
-	
-	/**
-	 *	获取会员Session信息 
-	 */
-	public static MemberInfo getMemberSession(HttpServletRequest request) {
-		
-		Object sessionObejct = null;
-		try {
-			sessionObejct = request.getSession().getAttribute(
-				SessionConstant.SESSION_LOGIN_INFO_KEY);
-			return (MemberInfo) sessionObejct;
-		} catch (Exception e) {
-			logger.error("从session中获取会员信息异常  [sessionObejct = " + sessionObejct + "]", e);
-			return null;
-		}
 	}
 	
 	/**
