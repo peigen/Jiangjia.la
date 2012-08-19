@@ -9,6 +9,8 @@ echo project path is ${project_path}
 echo '停止服务'
 ${webcontainer_path}/bin/jetty.sh stop;
 
+git pull;
+
 echo '开始删除';
 rm -rf /tmp/${project_name}.log
 
