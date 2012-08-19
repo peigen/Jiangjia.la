@@ -4,6 +4,8 @@
  */
 package com.peigen.web.depreciate.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,7 @@ import com.peigen.web.depreciate.util.LoginUtil;
 
 /**
  *                       
- * @Filename RegisterController.java
+ * @Filename UserController.java
  *
  * @Description 
  *
@@ -95,5 +97,11 @@ public class UserController extends UserControllerBase {
 			
 		}
 		return new ModelAndView(referUrl, modelMap);
+	}
+	
+	@RequestMapping("/signOut.html")
+	public ModelAndView signOut(HttpServletRequest request) throws IOException {
+		LoginUtil.cleanSession(request);
+		return new ModelAndView(new RedirectView("/index.html"));
 	}
 }

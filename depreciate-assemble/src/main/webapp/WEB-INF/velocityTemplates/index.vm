@@ -65,16 +65,17 @@
         <header id="hd" class="animated fadeInDown">
             <h1 class="logo"><a class="ir switch" data-panel-name="enter_url" href="" title="降价啦 &#991; Jiangjia.la">降价啦！</a></h1>
             <nav class="top_nav">
+                #set($userInfo = $!session.getAttribute("SESSION_LOGIN_INFO_KEY"))
                 #if($!userInfo)
                 <div class="user_info dropdown" id="user_opts">
-                    <a href="#user_opts" class="dropdown-toggle" data-toggle="dropdown"><span>agalwood.net@gmail.com</span><img class="avatar" src="img/gravatar.png" width="32" height="32" alt=""><b class="caret"></b></a>
+                    <a href="#user_opts" class="dropdown-toggle" data-toggle="dropdown"><span>$!userInfo.email</span><img class="avatar" src="img/gravatar.png" width="32" height="32" alt=""><b class="caret"></b></a>
                     <ul class="dropdown-menu pull-right">
                         <li class="menu_title">我的降价啦</li>
                         <li class="menu_item"><a href="#">降价订阅列表</a></li>
                         <li class="menu_item"><a href="#">降价通知设置</a></li>
                         <li class="divider"></li>
                         <li class="cf">
-                            <a href="signOut.html" class="btn_j btn_j_small sign_out">登出</a>
+                            <a href="/signOut.html" class="btn_j btn_j_small sign_out">登出</a>
                         </li>
                     </ul>
                 </div>                

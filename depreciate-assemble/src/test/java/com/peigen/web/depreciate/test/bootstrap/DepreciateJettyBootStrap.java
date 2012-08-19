@@ -54,7 +54,7 @@ public class DepreciateJettyBootStrap {
 	
 	private static String						WEBAPP_PATH		= getWebPath();
 	
-	private final static int					port			= 8888;
+	private final static int					port			= 8080;
 	
 	//使用者
 	private final static Map<String, String>	hostNameMapping	= new HashMap<String, String>();
