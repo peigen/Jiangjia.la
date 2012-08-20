@@ -22,14 +22,53 @@
     <!--  以下是logger的定义                                                     -->
     <!-- ===================================================================== -->
     
+	<logger name="log4j.logger.com.ibatis" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.com.ibatis.common.jdbc.SimpleDataSource" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.com.ibatis.common.jdbc.ScriptRunner" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.Connection" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.Statement" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.PreparedStatement" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="log4j.logger.java.sql.ResultSet" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="org.apache.commons.beanutils" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
 	<logger name="org.springframework" additivity="true">
-		<level value="info"/>
-		<appender-ref ref="FILE"/>
+		<level value="debug"/>
 		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.mortbay.log" additivity="true">
-		<level value="info"/>
-		<appender-ref ref="FILE"/>
+		<level value="debug"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	
+	<logger name="log4j.category.org.springframework.data.document.mongodb" additivity="true">
+		<level value="debug"/>
 		<appender-ref ref="STDOUT"/>
 	</logger>
     
@@ -37,7 +76,7 @@
     <!--  Root logger的定义                                                             -->
     <!-- ===================================================================== -->
     <root>
-        <level value="info"/>
+        <level value="debug"/>
         <appender-ref ref="FILE"/>
 		<appender-ref ref="STDOUT"/>
     </root>
