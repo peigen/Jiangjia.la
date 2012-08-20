@@ -146,10 +146,7 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 				
 			}));
 		} catch (Exception exception) {
-			
-		} finally {
-			
-			//清空上下文
+			logger.error("处理异常[order=" + signUpOrder + "]：", exception);
 			
 		}
 		
