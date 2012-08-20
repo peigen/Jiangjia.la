@@ -18,48 +18,48 @@
     
 	<logger name="log4j.logger.com.ibatis" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.logger.com.ibatis.common.jdbc.SimpleDataSource" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.logger.com.ibatis.common.jdbc.ScriptRunner" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.logger.java.sql.Connection" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.logger.java.sql.Statement" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.logger.java.sql.PreparedStatement" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.logger.java.sql.ResultSet" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="org.springframework" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	<logger name="log4j.category.org.springframework.data.document.mongodb" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	
 	<logger name="org.eclipse.jetty.util.log" additivity="true">
 		<level value="debug"/>
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE"/>
 	</logger>
 	
 	<!-- ===================================================================== -->
@@ -67,7 +67,7 @@
     <!-- ===================================================================== -->
     <root>
         <level value="debug"/>
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
     </root>
     
 </log4j:configuration>
