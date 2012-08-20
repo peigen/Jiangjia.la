@@ -429,7 +429,7 @@ figure {
   top: 50%;
   left: 50%;
   width: 640px;
-  margin-top: -28%;
+  margin-top: -188px;
   margin-left: -320px;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
@@ -806,6 +806,9 @@ body.welcome #notifications {
   font-size: 14px;
   margin: 0 0 4px;
 }
+body.enter_url #bd {
+  margin-top: -188px;
+}
 body.enter_url #bd #fm_enter_url {
   display: block;
 }
@@ -815,6 +818,9 @@ body.enter_url #bd #sign_up,
 body.enter_url #bd #sign_in,
 body.enter_url #bd #e404 {
   display: none;
+}
+body.confirm_submit #bd {
+  margin-top: -158px;
 }
 body.confirm_submit #bd #squid {
   width: 550px;
@@ -969,8 +975,7 @@ body.confirm_submit #bd #confirm .btn_cancel {
   background: url(../img/btn_cancel.png) no-repeat;
 }
 body.sign_up #bd {
-  /*margin-top: 20px;*/
-
+  margin-top: -186px;
 }
 body.sign_up #bd #sign_up {
   display: block;
@@ -983,8 +988,7 @@ body.sign_up #bd #e404 {
   display: none;
 }
 body.sign_in #bd {
-  /*margin-top: 20px;*/
-
+  margin-top: -179px;
 }
 body.sign_in #bd #sign_in {
   display: block;
@@ -997,7 +1001,7 @@ body.sign_in #bd #e404 {
   display: none;
 }
 body.error_404 #bd {
-  margin-top: -18%;
+  margin-top: -72px;
 }
 body.error_404 #bd #squid,
 body.error_404 #bd #fm_enter_url,

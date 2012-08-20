@@ -3,23 +3,8 @@
  * 
  * Jiangjia.la Main js.
  * Copyright 2012, Dr_rOot
- * Dual licensed under the MIT or GPL Version 2 licenses.
  *
- * @param  {Object} win       cache window
- * @param  {Object} $         cache jQuery $
- * @param  {Object} undefined cache undefined
- * @return {Object}
  */
-var Drj = (function(win, $, undefined) {
-
-    var that = $({});
-
-    that.switchPanel = function() {
-    }
-
-    return that;
-
-})(this, $);
 
 (function($) {
 
@@ -304,14 +289,14 @@ jQuery(function ($) {
 
     $('.dropdown-toggle').dropdown();
 
-    $.notification( 
-        {
-            title: '降小鱿快报：降价啦！降价啦！',
-            content: '您订阅的 “<a target="_blank" href="http://item.mbaobao.com/pshow-1211011602.html?s_l=1_13">[戈尔本]英伦再现系列牛皮手提单肩斜挎包 黄棕色（马鞍棕）</a>” 价格从648降为599了！如有需求，请<a target="_blank" href="#">点此</a>一键购买。',
-            img: "img/demo/01.jpg",
-            fill: true
-        }
-    );
+    // $.notification( 
+    //     {
+    //         title: '降小鱿快报：降价啦！降价啦！',
+    //         content: '您订阅的 “<a target="_blank" href="http://item.mbaobao.com/pshow-1211011602.html?s_l=1_13">[戈尔本]英伦再现系列牛皮手提单肩斜挎包 黄棕色（马鞍棕）</a>” 价格从648降为599了！如有需求，请<a target="_blank" href="#">点此</a>一键购买。',
+    //         img: "img/demo/01.jpg",
+    //         fill: true
+    //     }
+    // );
     
     // $.notification( 
     //     {
