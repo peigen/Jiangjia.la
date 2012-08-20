@@ -66,10 +66,7 @@ public class UserController extends UserControllerBase {
 			return new ModelAndView(new RedirectView(referUrl), modelMap);
 		}
 		
-		else {
-			
-		}
-		return new ModelAndView(referUrl, modelMap);
+		return new ModelAndView(new RedirectView(referUrl), modelMap);
 	}
 	
 	@RequestMapping(value = "/signIn.html", method = { RequestMethod.POST })
@@ -97,7 +94,7 @@ public class UserController extends UserControllerBase {
 		else {
 			
 		}
-		return new ModelAndView(referUrl, modelMap);
+		return new ModelAndView(new RedirectView(referUrl), modelMap);
 	}
 	
 	@RequestMapping("/signOut.html")
