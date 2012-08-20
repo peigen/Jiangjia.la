@@ -21,6 +21,8 @@ rm -rf ${webcontainer_path}/webapps/ROOT.war ;
 rm -rf ${webcontainer_path}/webapps/ROOT/ ;
 rm -rf ${webcontainer_path}/work/ ;
 
+cp jdbc.properties ./depreciate-dal/src/main/resources/jdbc.properties;
+
 
 echo '开始打包';
 cd ${project_path};
