@@ -26,6 +26,7 @@
 	
 	<!-- misc -->
 	<bean id="picBucketService" class="com.peigen.web.depreciate.service.misc.image.PicBucketServiceImpl" />
+	
 	<bean id="lowPicBucket" class="com.peigen.web.depreciate.service.misc.image.UpYun">
 		<constructor-arg name="bucketName" value="pic_low" />
 		<constructor-arg name="userName" value="jiangjiala_auto" />

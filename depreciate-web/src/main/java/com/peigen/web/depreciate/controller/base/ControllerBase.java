@@ -41,7 +41,9 @@ import com.peigen.web.depreciate.service.result.UserResult;
  */
 public class ControllerBase {
 	
-	protected final Logger				logger	= LoggerFactory.getLogger(getClass());
+	protected final Logger				logger			= LoggerFactory.getLogger(getClass());
+	
+	protected String					ERROR_MESSAGE	= "ERROR-MSG";
 	
 	@Autowired
 	protected UserQueryService			userQueryService;

@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_user` (
   `raw_add_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间' ,
   `raw_update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间' ,
   PRIMARY KEY (`ID`) ,
-  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) ,
+  UNIQUE INDEX `EMAIL_UNIQUE` (`user_email` ASC) ,
+  UNIQUE INDEX `NAME_UNIQUE` (`user_name` ASC) ,
   INDEX `EMAIL_INDEX` (`user_email` ASC))
 ENGINE = InnoDB
 CHARACTER SET utf8

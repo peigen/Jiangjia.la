@@ -83,7 +83,7 @@ public class MbaobaoParse extends ParseBase {
 	
 	// 内部方法
 	private static void setSerialNo(ProductInfo product, Document mbbDoc) {
-		Elements elements = mbbDoc.select("li.goods-number").select("div");
+		Elements elements = mbbDoc.select("div.goods-number");
 		
 		String productSerialNo = elements.get(0).childNode(0).toString();
 		
@@ -96,9 +96,9 @@ public class MbaobaoParse extends ParseBase {
 	
 	private static void setCurrentPrice(ProductInfo product, Document mbbDoc) {
 		
-		Elements elements = mbbDoc.select("li.goods-mb-price").select("span.g-p-n");
+		Elements elements = mbbDoc.select("div.goods-price").select("span.price-num");
 		
-		Money productCurrentPrice = new Money(elements.get(0).childNode(1).toString());
+		Money productCurrentPrice = new Money(elements.get(0).childNode(0).toString());
 		product.setProductCurrentPrice(productCurrentPrice);
 		
 		PrintLogTool.info(TrackCategoryEnum.MBAOBAO.message() + "当前价格：" + productCurrentPrice,
@@ -115,7 +115,7 @@ public class MbaobaoParse extends ParseBase {
 	private static void setProductPic(ProductInfo productInfo) {
 		List<ProductPicInfo> productPicInfos = new ArrayList<ProductPicInfo>();
 		
-		Elements elements = doc.select("div.g-s-list > ul > li");
+		Elements elements = doc.select("div.picture-small-list>ul>li");
 		
 		for (Element _element : elements) {
 			String url = _element.select("a").attr("href").toString();

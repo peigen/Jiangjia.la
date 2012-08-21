@@ -58,7 +58,7 @@ public class ProductPicRepositoryImpl extends RepositoryBase implements ProductP
 		
 		ProductPicConvertor.convert(productPic, productPicInfo);
 		
-		//		storePicToYupoo(productPicInfo);
+		storePicToYupoo(productPicInfo);
 		
 		try {
 			depreciateProductPicDAO.insert(productPic);
@@ -70,7 +70,6 @@ public class ProductPicRepositoryImpl extends RepositoryBase implements ProductP
 	}
 	
 	// 存入云端存储
-	@SuppressWarnings("unused")
 	private void storePicToYupoo(ProductPicInfo productPicInfo) {
 		PicBucketInfo bucket = new PicBucketInfo(productPicInfo.getProductId()
 													+ DepreciateConstants.SEPARATOR_CHAR_HYPHEN

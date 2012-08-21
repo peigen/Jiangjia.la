@@ -125,6 +125,7 @@ public class UserServiceImpl extends DepreciateServiceBase implements UserServic
 						result.setUserInfo(userInfo);
 						
 					} catch (DepreciateException e) {
+						
 						logger.error("处理异常[order=" + signUpOrder + "]：", e);
 						
 						status.setRollbackOnly();

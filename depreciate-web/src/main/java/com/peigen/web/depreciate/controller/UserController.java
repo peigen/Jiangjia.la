@@ -66,7 +66,11 @@ public class UserController extends UserControllerBase {
 			return new ModelAndView(new RedirectView(referUrl), modelMap);
 		}
 		
-		return new ModelAndView(new RedirectView(referUrl), modelMap);
+		else {
+			modelMap.put(ERROR_MESSAGE, result.getResultCode().message());
+		}
+		
+		return new ModelAndView(new RedirectView("/index.html#sign_up"), modelMap);
 	}
 	
 	@RequestMapping(value = "/signIn.html", method = { RequestMethod.POST })
