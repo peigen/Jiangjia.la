@@ -123,6 +123,7 @@ public class MbaobaoParse extends ParseBase {
 			ProductPicInfo productPicInfo = PicParse.parse(url);
 			
 			productPicInfos.add(productPicInfo);
+			break;
 		}
 		
 		productInfo.setProductPicInfos(productPicInfos);
