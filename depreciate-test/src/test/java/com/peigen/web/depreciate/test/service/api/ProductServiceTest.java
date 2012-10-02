@@ -35,31 +35,41 @@ public class ProductServiceTest extends DepreciateServiceTestBase {
 	@SuppressWarnings("unused")
 	private String	dang_test_url	= "http://product.dangdang.com/Product.aspx?product_id=1260888102#ref=www-0-D";
 	
+	private String	mbb_test_url	= "http://www.mbaobao.com/item/1305000502";
+	
 	@DepreciateTestAnnotated(description = "添加商品测试用例---成功用例")
 	public void testAddProduct() {
 		
 		cleanProduct();
 		
-		ProductResult result = null;
-		
 		// 麦包包
-		//        ProductOrder mbaobaoOrder = genProductOrder();
-		//        result = productService.addProduct(mbaobaoOrder);
-		//
-		//        assertResult(result);
-		
+		mbb();
 		// 麦考林
-		ProductOrder m18Order = genProductOrder();
-		m18Order.setUrl(m18_test_url);
-		result = productService.addProduct(m18Order);
+		//		m18();
+		//		// 当当
+		//		dangdang();
+	}
+	
+	private void mbb() {
+		ProductOrder mbaobaoOrder = genProductOrder();
+		mbaobaoOrder.setUrl(mbb_test_url);
+		ProductResult result = productService.addProduct(mbaobaoOrder);
 		
 		assertResult(result);
+	}
+	
+	private void m18() {
+		ProductOrder m18Order = genProductOrder();
+		m18Order.setUrl(m18_test_url);
+		ProductResult result = productService.addProduct(m18Order);
 		
-		// 当当
-		//		ProductOrder dangdangOrder = genProductOrder();
-		//		dangdangOrder.setUrl(dang_test_url);
-		//		result = productService.addProduct(dangdangOrder);
-		
+		assertResult(result);
+	}
+	
+	private void dangdang() {
+		ProductOrder dangdangOrder = genProductOrder();
+		dangdangOrder.setUrl(dang_test_url);
+		ProductResult result = productService.addProduct(dangdangOrder);
 		assertResult(result);
 		
 	}
