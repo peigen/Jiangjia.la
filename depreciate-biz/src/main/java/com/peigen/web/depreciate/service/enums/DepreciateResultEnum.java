@@ -54,6 +54,9 @@ public enum DepreciateResultEnum {
 	/** 重复的 */
 	DEPRECIATE_DUPLICATE_EXCEPTION("DEPRECIATE_DUPLICATE_EXCEPTION", "重复的"),
 	
+	/** 解析产品异常 */
+	DEPRECIATE_PARSE_PRODUCT_EXCEPTION("DEPRECIATE_PARSE_PRODUCT_EXCEPTION", "解析产品异常"),
+	
 	/** ==============数据库异常==============*/
 	/** 数据库异常 */
 	SQL_EXCEPTION("SQL_EXCEPTION", "数据库异常"),

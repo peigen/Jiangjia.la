@@ -17,7 +17,7 @@ COMMENT = '系统表，用于生成序列号';
 
 -- 业务表
 CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_user` (
-  `id` VARCHAR(16) NOT NULL COMMENT 'ID格式：日期+自增(8位)' ,
+  `id` VARCHAR(20) NOT NULL COMMENT 'ID格式：日期+自增(8位)' ,
   `user_name` VARCHAR(32) NULL COMMENT '用户名' ,
   `user_passwd` VARCHAR(32) NULL COMMENT '用户密码名称' ,
   `user_email` VARCHAR(128) NULL COMMENT '用户Email' ,
@@ -49,7 +49,7 @@ COLLATE utf8_general_ci
 COMMENT = '用户表关注商品映射表';
 
 CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_product` (
-  `id` VARCHAR(16) NOT NULL COMMENT 'ID格式：日期+自增(8位)' ,
+  `id` VARCHAR(20) NOT NULL COMMENT 'ID格式：日期+自增(8位)' ,
   `track_category` VARCHAR(32) NULL COMMENT '网站类别' ,
   `product_name` VARCHAR(128) NULL COMMENT '商品名称-通常是商家的title里面的名字' ,
   `product_serial_no` VARCHAR(64) NULL COMMENT '商品序列号' ,
@@ -105,7 +105,23 @@ CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_delay` (
 ENGINE = InnoDB
 CHARACTER SET utf8
 COLLATE utf8_general_ci
-COMMENT = '商品';
+COMMENT = '商品通知';
+
+
+CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_subscription` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '自增字段' ,
+  `product_id` VARCHAR(20) NOT NULL COMMENT '产品ID' ,
+  `user_id` VARCHAR(20) NOT NULL COMMENT '用户ID' ,
+  `purchased` VARCHAR(20) NOT NULL COMMENT '是否已购买' ,
+  `privacy` VARCHAR(128) NULL COMMENT '隐私' ,
+  `raw_add_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间' ,
+  `raw_update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间' ,
+  PRIMARY KEY (`ID`) ,
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) )
+ENGINE = InnoDB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+COMMENT = '商品订阅';
 
 --  dml
 

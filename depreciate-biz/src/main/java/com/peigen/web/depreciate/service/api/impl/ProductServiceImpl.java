@@ -54,6 +54,32 @@ public class ProductServiceImpl extends ProductServiceBase implements ProductSer
 	/**
 	 * @param productOrder
 	 * @return
+	 * @see com.peigen.web.depreciate.service.api.ProductService#resolveProduct(com.peigen.web.depreciate.service.order.ProductOrder)
+	 */
+	@Override
+	public ProductResult resolveProduct(ProductOrder productOrder) {
+		
+		ProductResult result = new ProductResult();
+		Date now = getSysdate();
+		
+		try {
+			// 解析url
+			ProductInfo productInfo = parseService.parse(productOrder.getUrl());
+			productInfo.setStatus(ProductStatusEnum.ENABLE);
+			productInfo.setId(getDBKey(TableSeqNameEnum.SEQ_DEPRECIATE_PRODUCT));
+			productInfo.setRawAddTime(now);
+			
+			setSuccessProductResult(result, productInfo);
+		} catch (Exception e) {
+			logger.error("", e);
+			result.setResultCode(DepreciateResultEnum.DEPRECIATE_PARSE_PRODUCT_EXCEPTION);
+		}
+		return result;
+	}
+	
+	/**
+	 * @param productOrder
+	 * @return
 	 * @see com.peigen.web.depreciate.service.api.ProductService#addProduct(com.peigen.web.depreciate.service.order.ProductOrder)
 	 */
 	@Override

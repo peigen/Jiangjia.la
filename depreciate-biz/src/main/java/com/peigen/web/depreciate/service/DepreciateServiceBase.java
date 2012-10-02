@@ -24,12 +24,14 @@ import com.peigen.web.depreciate.service.cache.UserLocalCache;
 import com.peigen.web.depreciate.service.enums.DepreciateResultEnum;
 import com.peigen.web.depreciate.service.enums.TableSeqNameEnum;
 import com.peigen.web.depreciate.service.exception.DepreciateException;
+import com.peigen.web.depreciate.service.info.ProductInfo;
 import com.peigen.web.depreciate.service.info.UserInfo;
 import com.peigen.web.depreciate.service.order.Order;
 import com.peigen.web.depreciate.service.repository.ProductChangeLogRepository;
 import com.peigen.web.depreciate.service.repository.ProductRepository;
 import com.peigen.web.depreciate.service.repository.UserAttentionRepository;
 import com.peigen.web.depreciate.service.repository.UserRepository;
+import com.peigen.web.depreciate.service.result.ProductResult;
 import com.peigen.web.depreciate.service.result.UserResult;
 
 /**
@@ -115,31 +117,21 @@ public class DepreciateServiceBase {
 		
 	}
 	
-	/**
-	 * @return
-	 */
 	protected Date getSysdate() {
 		Date sysDate = extraDAO.getSysdate();
 		PrintLogTool.info("系统时间：sysDate=" + sysDate, logger);
 		return sysDate;
 	}
 	
-	/**
-	 * @param tableSeqName
-	 * @return
-	 */
 	protected String getDBKey(TableSeqNameEnum tableSeqName) {
 		//前8位yyyyMMdd格式
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		String today = dateFormat.format(getSysdate());
 		
-		return today + genSeq(tableSeqName);
+		return today + genSeq(tableSeqName) + genProductCode("0000");
 		
 	}
 	
-	/**
-	 * @return
-	 */
 	private String genSeq(TableSeqNameEnum tableSeqName) {
 		String seq = String.valueOf(extraDAO.getNextSeq(tableSeqName.code()));
 		
@@ -148,9 +140,19 @@ public class DepreciateServiceBase {
 		return src;
 	}
 	
+	private String genProductCode(String businessCode) {
+		return businessCode;
+	}
+	
 	protected void setSuccessUserResult(UserResult result, UserInfo userInfo) {
 		result.setSuccess(true);
 		result.setResultCode(DepreciateResultEnum.EXECUTE_SUCCESS);
 		result.setUserInfo(userInfo);
+	}
+	
+	protected void setSuccessProductResult(ProductResult result, ProductInfo productInfo) {
+		result.setSuccess(true);
+		result.setResultCode(DepreciateResultEnum.EXECUTE_SUCCESS);
+		result.setProductInfo(productInfo);
 	}
 }

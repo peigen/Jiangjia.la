@@ -36,6 +36,14 @@ public interface ProductService {
 	 * @param productOrder
 	 * @return
 	 */
+	public ProductResult resolveProduct(ProductOrder productOrder);
+	
+	/**
+	 * 增加商品
+	 * 
+	 * @param productOrder
+	 * @return
+	 */
 	public ProductResult addProduct(ProductOrder productOrder);
 	
 	/**
