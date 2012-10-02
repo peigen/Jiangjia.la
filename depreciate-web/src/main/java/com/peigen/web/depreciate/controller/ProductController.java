@@ -71,6 +71,7 @@ public class ProductController extends ControllerBase {
 	
 	@RequestMapping(value = "/addProduct.html", method = { RequestMethod.GET })
 	@ResponseBody
+	@Deprecated
 	public String add(HttpServletRequest request) {
 		
 		String url = getParameterTrim(request, "productUrl");
@@ -118,13 +119,14 @@ public class ProductController extends ControllerBase {
 	@ResponseBody
 	public String addByPara(HttpServletRequest request) {
 		
-		String email = getParameterTrim(request, "email");
 		String url = getParameterTrim(request, "productUrl");
 		String price = getParameterTrim(request, "price");
 		String serialNo = getParameterTrim(request, "serialNo");
 		String imagesStr = getParameterTrim(request, "imagesStr");
 		
-		if (StringUtil.isBlank(email) || StringUtil.isBlank(url) || StringUtil.isBlank(price)
+		String userId = LoginUtil.getCurrentLoginId(request);
+		
+		if (StringUtil.isBlank(userId) || StringUtil.isBlank(url) || StringUtil.isBlank(price)
 			|| StringUtil.isBlank(serialNo)) {
 			return JSONObject.toJSONString("狗日，你丫是二啊!");
 		}
@@ -133,7 +135,7 @@ public class ProductController extends ControllerBase {
 		
 		ProductParaOrder productOrder = new ProductParaOrder();
 		productOrder.setUrl(url);
-		productOrder.setUserId(getUser(email).getId());
+		productOrder.setUserId(userId);
 		productOrder.setPrice(new Money(price));
 		productOrder.setSerialNo(serialNo);
 		
