@@ -35,7 +35,7 @@ COMMENT = '用户表';
 
 CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_user_attention` (
   `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '自增字段' ,
-  `user_id` VARCHAR(16) NOT NULL COMMENT '用户ID' ,
+  `user_id` VARCHAR(20) NOT NULL COMMENT '用户ID' ,
   `user_attention_product_id` VARCHAR(2048) NULL COMMENT '用户关注产品id' ,
   `product_alias_name` VARCHAR(128) NULL COMMENT '商品别名' ,
   `status` VARCHAR(16) NOT NULL COMMENT '状态 (FO/UNFO)' ,
@@ -68,7 +68,7 @@ COMMENT = '商品表';
 
 CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_product_pic` (
   `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '自增字段' ,
-  `product_id` VARCHAR(64) NULL COMMENT '商品ID' ,
+  `product_id` VARCHAR(20) NULL COMMENT '商品ID' ,
   `pic_name` VARCHAR(32) NULL COMMENT '图片名字' ,
   `track_category` VARCHAR(32) NULL COMMENT '网站类别' ,
   `pic_source_url` VARCHAR(2048) NOT NULL COMMENT '图片源地址' ,
@@ -83,7 +83,7 @@ COMMENT = '商品表图片';
 
 CREATE TABLE IF NOT EXISTS `db_depreciate`.`depreciate_product_change_log` (
   `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '自增字段' ,
-  `product_id` VARCHAR(16) NOT NULL COMMENT '商品表ID' ,
+  `product_id` VARCHAR(20) NOT NULL COMMENT '商品表ID' ,
   `product_current_price` DECIMAL NOT NULL COMMENT '商品当前价格(单位分)' ,
   `product_change_price` DECIMAL NOT NULL COMMENT '商品变化价格(单位分)' ,
   `raw_add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间' ,

@@ -83,7 +83,7 @@ public class DepreciateServiceTestBase extends DepreciateDalTestBase {
 	
 	protected UserInfo initUserPeigen() {
 		
-		cleanUser(TEST_USER_NAME);
+		cleanUserByEmail(TEST_USER_EMAIL);
 		
 		UserSignUpOrder signUpOrder = new UserSignUpOrder();
 		signUpOrder.setUserEmail(TEST_USER_EMAIL);
