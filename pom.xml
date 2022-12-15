@@ -21,7 +21,7 @@
 		<depreciate.version>1.0</depreciate.version>
 		<ibatis.version>2.3.4.726</ibatis.version>
 		<slf4j.version>1.6.1</slf4j.version>
-		<spring.maven.artifact.version>3.0.5.RELEASE</spring.maven.artifact.version>
+		<spring.maven.artifact.version>5.2.20.RELEASE</spring.maven.artifact.version>
 		<junit.version>3.8.2</junit.version>
 	</properties>
 
